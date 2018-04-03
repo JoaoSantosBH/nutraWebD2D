@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "599313452689",
+    "firebase_url": "https://fir-capstone02.firebaseio.com",
+    "project_id": "firebase-capstone02",
+    "storage_bucket": "firebase-capstone02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599313452689:android:3fc6a2f54f90520b",
+        "android_client_info": {
+          "package_name": "com.nutraweb.jomar.capstone02"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "599313452689-4b7t8ju6436vlsia1069qr0lrr71v5oi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxjG1fv3a-GOnGFjFCwobM_DQd6P1NcNE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

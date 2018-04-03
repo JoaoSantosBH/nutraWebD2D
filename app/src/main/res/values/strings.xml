@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">nutraWEB d2d cosmetics</string>
+    <string name="login_country_code">Country Code</string>
+    <string name="login_phone_number">Phone Number</string>
+    <string name="login_button">get Verification code</string>
+    <string name="login_placeholder_country_code">ex: Brazil is 55</string>
+</resources>
