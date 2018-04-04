@@ -17,10 +17,10 @@ import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String ERROR_MSG = "Please Digit Phone Number";
-    private static final String CONFIRM_MSG = "The number is Correct?" ;
-    private static final String CONFIRM = "Confirm?";
-    private static final String POST_MSG = "Your Number was send!";
+    private static final int ERROR_MSG = R.string.error_message;
+    private static final int CONFIRM_MSG = R.string.snack_login_confirm_message ;
+    private static final int CONFIRM = R.string.snack_login_confirm;
+    private static final int POST_MSG = R.string.snack_confirm_send;
 
     @BindView(R.id.countryCode)
     EditText countryCodeProvided;

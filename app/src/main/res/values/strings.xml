@@ -4,4 +4,8 @@
     <string name="login_phone_number">Phone Number</string>
     <string name="login_button">get Verification code</string>
     <string name="login_placeholder_country_code">ex: Brazil is 55</string>
+    <string name="error_message">Please Digit a Phone Number</string>
+    <string name="snack_login_confirm_message">The number is Correct?</string>
+    <string name="snack_login_confirm">Confirm</string>
+    <string name="snack_confirm_send">Your Number was send!</string>
 </resources>
