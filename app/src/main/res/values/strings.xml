@@ -5,7 +5,21 @@
     <string name="login_button">get Verification code</string>
     <string name="login_placeholder_country_code">ex: Brazil is 55</string>
     <string name="error_message">Please Digit a Phone Number</string>
+    <string name="invalid_phone_number">The number format is invalid</string>
     <string name="snack_login_confirm_message">The number is Correct?</string>
     <string name="snack_login_confirm">Confirm</string>
     <string name="snack_confirm_send">Your Number was send!</string>
+    <string name="desc_firebase_lockup" />
+    <string name="phone_title_text">Auth</string>
+    <string name="signed_out">bye</string>
+    <string name="status_verification_succeeded">Sucesso!!</string>
+    <string name="instant_validation">Instant Validation</string>
+    <string name="status_sign_in_failed">Login has failed!</string>
+    <string name="status_verification_failed">Cerification Failed</string>
+    <string name="status_code_sent">codigo enviado</string>
+    <string name="signed_in">entrou</string>
+    <string name="firebase_status_fmt">Autenticated User</string>
+    <string name="key_verify_msg">key_verify_in_progress</string>
+    <string name="firebase_quota_exced">Quota exceeded</string>
+    <string name="title_activity_dash_board">DashBoardActivity</string>
 </resources>

@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "599313452689-kn9ca0cdjood3ggth8h0ocuk7pklr09i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nutraweb.jomar.capstone02",
+            "certificate_hash": "05470d4a24657bf2f781dc5337496b81f99cb672"
+          }
+        },
+        {
+          "client_id": "599313452689-kk5tb5d9406ojr0b592pnqt2e3hq6md0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nutraweb.jomar.capstone02",
+            "certificate_hash": "255f50c150a6766161829bc8c37a3a80a94ead1c"
+          }
+        },
+        {
           "client_id": "599313452689-4b7t8ju6436vlsia1069qr0lrr71v5oi.apps.googleusercontent.com",
           "client_type": 3
         }
