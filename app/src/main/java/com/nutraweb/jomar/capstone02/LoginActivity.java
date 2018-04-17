@@ -41,6 +41,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private static final int CONFIRM_MSG            = R.string.snack_login_confirm_message ;
     private static final int CONFIRM                = R.string.snack_login_confirm;
     private static final int POST_MSG               = R.string.snack_confirm_send;
+    private static final int LOGIN_FAILED           = R.string.snack_login_failed;
+
     private static final int KEY_VERIFY_IN_PROGRESS = R.string.key_verify_msg;
     private boolean mVerificationInProgress = false;
     private static final int STATE_INITIALIZED      = 1;
@@ -274,24 +276,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case STATE_CODE_SENT:
                 // Code sent state, show the verification field, the
-                Log.v(TAG,"Verificacao sucesso");
+                Log.v(TAG,"Code Sent");
+
                 break;
             case STATE_VERIFY_FAILED:
                 // Verification has failed, show all options
-                Log.v(TAG,"Verificacao sucesso");
+                Log.v(TAG,"The verification has failed");
                 break;
             case STATE_VERIFY_SUCCESS:
                 // Verification has succeeded, proceed to firebase sign in
-                Log.v(TAG,"Verificacao sucesso");
+                Log.v(TAG,"Success Verification");
 
                 break;
             case STATE_SIGNIN_FAILED:
                 // No-op, handled by sign-in check
-                Log.v(TAG,"Verificacao sucesso");
+                Log.v(TAG,"Login has failed");
+                Snackbar snackbar = Snackbar.make(coordinatorLayout, LOGIN_FAILED, Snackbar.LENGTH_LONG);
+                                        snackbar.show();
                 break;
             case STATE_SIGNIN_SUCCESS:
                 // Np-op, handled by sign-in check
-                Log.v(TAG,"Verificacao sucesso");
+                Log.v(TAG,"Success login");
                 Intent i = new Intent(LoginActivity.this,DashBoardActivity.class);
                 startActivity(i);
                 break;
@@ -299,12 +304,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if (user == null) {
             // Signed out
-
-
+            Toast.makeText(LoginActivity.this,R.string.firebase_user_null, Toast.LENGTH_SHORT).show();
 //            mStatusText.setText(R.string.signed_out);
         } else {
             // Signed in
-
 
             phoneNumberProvided.setText(null);
             countryCodeProvided.setText(null);
@@ -318,8 +321,40 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             phoneNumberProvided.setError(String.valueOf(R.string.invalid_phone_number));
             return false;
         }
-
         return true;
+    }
+
+
+    private void hideNumberKey(){
+        //hide number key to snack apear
+        InputMethodManager imm = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(
+                phoneNumberProvided.getWindowToken(), 0);
+    }
+
+    private void prepareNumberToSend(){
+
+        String country = "+" + countryCodeProvided.getText().toString();
+        String phone = phoneNumberProvided.getText().toString();
+        if(country != null && !country.isEmpty() && phone != null && !phone.isEmpty() ){
+            resultPhoneNumber =  country + phone;
+            if (resultPhoneNumber != null && !resultPhoneNumber.isEmpty() ){//tirar este if de validacao ja foi validado
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout, CONFIRM_MSG + " " + resultPhoneNumber, Snackbar.LENGTH_LONG)
+                        .setAction(CONFIRM, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view1){
+                                startPhoneNumberVerification(resultPhoneNumber);
+                            }
+                        });
+                snackbar.show();
+            }
+        }else{
+            Snackbar snackbar = Snackbar
+                    .make(coordinatorLayout,ERROR_MSG,Snackbar.LENGTH_LONG);
+            snackbar.show();
+        }
     }
 
 
@@ -329,33 +364,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (view.getId()){
 
             case R.id.getVerificationButton:
-                InputMethodManager imm = (InputMethodManager)
-                getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(
-                        phoneNumberProvided.getWindowToken(), 0);
-
-                String country = "+" + countryCodeProvided.getText().toString();
-                String phone = phoneNumberProvided.getText().toString();
-                if(country != null && !country.isEmpty() && phone != null && !phone.isEmpty() ){
-                    resultPhoneNumber =  country + phone;
-                    if (resultPhoneNumber != null && !resultPhoneNumber.isEmpty() ){//tirar este if de validacao ja foi validado
-                        Snackbar snackbar = Snackbar
-                                .make(coordinatorLayout, CONFIRM_MSG + " " + resultPhoneNumber, Snackbar.LENGTH_LONG)
-                                .setAction(CONFIRM, new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view1){
-                                        /*Snackbar snackbar1 = Snackbar.make(coordinatorLayout, POST_MSG, Snackbar.LENGTH_LONG);
-                                        snackbar1.show();*/
-                                        startPhoneNumberVerification(resultPhoneNumber);
-                                    }
-                                });
-                        snackbar.show();
-                    }
-                }else{
-                    Snackbar snackbar = Snackbar
-                            .make(coordinatorLayout,ERROR_MSG,Snackbar.LENGTH_LONG);
-                    snackbar.show();
-                }
+                hideNumberKey();
+                prepareNumberToSend();
         }
     }
 
