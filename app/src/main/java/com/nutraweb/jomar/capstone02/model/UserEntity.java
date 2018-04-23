@@ -11,6 +11,7 @@ public class UserEntity implements Serializable {
     private int id;
     private String name;
     private String email;
+    private int phoneNumber;
 
     public int getId() {
         return id;
@@ -28,6 +29,6 @@ public class UserEntity implements Serializable {
         return phoneNumber;
     }
 
-    private int phoneNumber;
+
 
 }

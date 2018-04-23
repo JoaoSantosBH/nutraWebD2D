@@ -18,15 +18,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by jomar on 11/04/18.
+ * Created by jomar on 21/04/18.
  */
 
-public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.MenuViewHolder> {
+public class StockDashBoardAdapter extends RecyclerView.Adapter<StockDashBoardAdapter.MenuViewHolder> {
 
 
-    private static final String CUSTOMER = "CUSTOMER";
-    private static final String SALES = "SALES";
-    private static final String STOCK ="STOCK";
+    private static final String ADD_ITEM = "Add Item on Stock";
+    private static final String LIST_STOCK = "My Stock";
 
     private List<String> list;
 
@@ -38,16 +37,16 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Menu
     }
 
 
-    public DashboardAdapter(MenuAdapterClickHandler mClickHandler) {
+    public StockDashBoardAdapter(MenuAdapterClickHandler mClickHandler) {
         this.mClickHandler = mClickHandler;
     }
 
 
     public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @BindView(R.id.dash_menu_thumb)
+        @BindView(R.id.stock_menu_thumb)
         ImageView thumb;
-        @BindView(R.id.dash_menu_title)
+        @BindView(R.id.stock_menu_title)
         TextView name;
 
 
@@ -71,7 +70,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Menu
     @Override
     public MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.list_item_dash_board, parent, false);
+        View view = layoutInflater.inflate(R.layout.list_item_stock, parent, false);
         return new MenuViewHolder(view);
     }
 
@@ -82,13 +81,10 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Menu
         int img;
 
         switch (name) {
-            case CUSTOMER:
-                img = R.mipmap.cap_customer_icon;
+            case ADD_ITEM:
+                img = R.mipmap.cap_add_icon;
                 break;
-            case SALES:
-                img = R.mipmap.cap_sale_icon;
-                break;
-            case STOCK:
+            case LIST_STOCK:
                 img = R.mipmap.cap_stock_icon;
                 break;
 
@@ -101,10 +97,10 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Menu
         menuViewHolder.name.setTypeface(customFont);
 
         Picasso.with(context)
-                    .load(img)
-                    .placeholder(R.mipmap.cap_quest_icon)
-                    .error(R.mipmap.cap_error_icon)
-                    .into(menuViewHolder.thumb);
+                .load(img)
+                .placeholder(R.mipmap.cap_quest_icon)
+                .error(R.mipmap.cap_error_icon)
+                .into(menuViewHolder.thumb);
 
     }
 
@@ -118,6 +114,5 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Menu
         this.list = list;
         notifyDataSetChanged();
     }
-
 
 }

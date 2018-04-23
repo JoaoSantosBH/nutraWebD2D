@@ -18,36 +18,33 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by jomar on 11/04/18.
+ * Created by jomar on 22/04/18.
  */
 
-public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.MenuViewHolder> {
-
-
-    private static final String CUSTOMER = "CUSTOMER";
-    private static final String SALES = "SALES";
-    private static final String STOCK ="STOCK";
+public class SalesDashBoardAdapter extends RecyclerView.Adapter<SalesDashBoardAdapter.MenuViewHolder>  {
+    private static final String NEW_SALE = "New Sale";
+    private static final String HISTORY = "Sales History";
 
     private List<String> list;
 
 
-    private final MenuAdapterClickHandler mClickHandler;
+    private final SalesDashBoardAdapter.MenuAdapterClickHandler mClickHandler;
 
     public interface MenuAdapterClickHandler {
         void onClick(String string);
     }
 
 
-    public DashboardAdapter(MenuAdapterClickHandler mClickHandler) {
+    public SalesDashBoardAdapter(SalesDashBoardAdapter.MenuAdapterClickHandler mClickHandler) {
         this.mClickHandler = mClickHandler;
     }
 
 
     public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @BindView(R.id.dash_menu_thumb)
+        @BindView(R.id.sales_menu_thumb)
         ImageView thumb;
-        @BindView(R.id.dash_menu_title)
+        @BindView(R.id.sales_menu_title)
         TextView name;
 
 
@@ -69,27 +66,24 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Menu
 
 
     @Override
-    public MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SalesDashBoardAdapter.MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.list_item_dash_board, parent, false);
-        return new MenuViewHolder(view);
+        View view = layoutInflater.inflate(R.layout.list_item_sales, parent, false);
+        return new SalesDashBoardAdapter.MenuViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(MenuViewHolder menuViewHolder, int position) {
+    public void onBindViewHolder(SalesDashBoardAdapter.MenuViewHolder menuViewHolder, int position) {
         Context context = menuViewHolder.itemView.getContext();
         String name = list.get(position);
         int img;
 
         switch (name) {
-            case CUSTOMER:
-                img = R.mipmap.cap_customer_icon;
+            case NEW_SALE:
+                img = R.mipmap.cap_add_sale_icon;
                 break;
-            case SALES:
+            case HISTORY:
                 img = R.mipmap.cap_sale_icon;
-                break;
-            case STOCK:
-                img = R.mipmap.cap_stock_icon;
                 break;
 
             default:
@@ -101,10 +95,10 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Menu
         menuViewHolder.name.setTypeface(customFont);
 
         Picasso.with(context)
-                    .load(img)
-                    .placeholder(R.mipmap.cap_quest_icon)
-                    .error(R.mipmap.cap_error_icon)
-                    .into(menuViewHolder.thumb);
+                .load(img)
+                .placeholder(R.mipmap.cap_quest_icon)
+                .error(R.mipmap.cap_error_icon)
+                .into(menuViewHolder.thumb);
 
     }
 
@@ -118,6 +112,4 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Menu
         this.list = list;
         notifyDataSetChanged();
     }
-
-
 }

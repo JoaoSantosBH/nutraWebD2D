@@ -119,4 +119,16 @@
     <string name="product_image">Product Image</string>
     <string name="error_loading_data">Error loading data!</string>
     <string name="menu_image">Menu item</string>
+    <string name="title_activity_customer">Customer</string>
+    <string name="title_activity_stock">StockActivity</string>
+    <string name="title_activity_add_stock">AddStockActivity</string>
+    <string name="add_stock_title">Add Items on Stock</string>
+    <string name="title_new_order">New order</string>
+    <string name="title_add_stock">Add Item on Stock</string>
+    <string name="title_customer">Customers</string>
+    <string name="title_activity_customer_add">CustomerAddActivity</string>
+    <string name="title_activity_sales_add">SalesDashBoardActivity</string>
+    <string name="add_customer_title">ADD CUSTOMER</string>
+    <string name="title_add_customer">Add Customer</string>
+    <string name="sales_sell_toolbar">New Order</string>
 </resources>

@@ -17,13 +17,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DashBoardActivity"
+            android:name=".ui.DashBoardActivity"
             android:label="@string/title_activity_dash_board"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.NewOrderActivity"
+            android:name=".ui.SalesSellActivity"
             android:label="@string/title_activity_new_order"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.CustomerDashBoardActivity"
+            android:label="@string/title_activity_customer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.StockDashBoardActivity"
+            android:label="@string/title_activity_stock"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.StockAddItemActivity"
+            android:label="@string/title_activity_add_stock"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.CustomerAddActivity"
+            android:label="@string/title_activity_customer_add"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ui.SalesDashBoardActivity"
+            android:label="@string/title_activity_sales_add"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>

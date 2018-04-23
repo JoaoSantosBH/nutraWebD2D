@@ -8,7 +8,7 @@
     android:background="@drawable/background">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/dash_list"
+        android:id="@+id/dash_recyclerview"
         android:clipToPadding="false"
         android:scrollbarStyle="outsideOverlay"
         android:layout_width="match_parent"
@@ -19,9 +19,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-
-
     <TextView
         android:id="@+id/error_textView"
         android:layout_width="wrap_content"
@@ -30,9 +27,6 @@
         android:text="@string/error_loading_data"
         style="@style/Base.TextAppearance.AppCompat.Title"
         android:visibility="invisible" />
-
-
-
 
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/spin_kit"
