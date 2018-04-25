@@ -21,14 +21,48 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_add_stock" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/add_stock_fab"
-        android:layout_width="wrap_content"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/add_stcok_recycler_view"
+        android:clipToPadding="false"
+        android:scrollbarStyle="outsideOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <GridLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_playlist_add_check_black_24dp" />
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/error_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:text="@string/error_loading_data"
+            style="@style/Base.TextAppearance.AppCompat.Title"
+            android:visibility="invisible" />
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/stock_add_spin_kit"
+            style="@style/SpinKitView.Large.Circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            app:SpinKit_Color="@color/colorAccent"
+            android:visibility="invisible" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="invisible" />
+    </GridLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.github.ybq.android.spinkit.SpinKitView;
 import com.nutraweb.jomar.capstone02.R;
 import com.nutraweb.jomar.capstone02.adapter.SalesDashBoardAdapter;
-import com.nutraweb.jomar.capstone02.adapter.StockDashBoardAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +44,7 @@ public class SalesDashBoardActivity extends AppCompatActivity implements SalesDa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layoutactivity_sales_dash);
+        setContentView(R.layout.activity_sales_dash);
 
         ButterKnife.bind(this);
 
