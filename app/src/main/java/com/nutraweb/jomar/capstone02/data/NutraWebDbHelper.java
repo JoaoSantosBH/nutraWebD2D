@@ -17,7 +17,7 @@ public class NutraWebDbHelper extends SQLiteOpenHelper {
             UserContract.UserEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             UserContract.UserEntry.COLUMN_USER_NAME + " TEXT NOT NULL, " +
             UserContract.UserEntry.COLUMN_USER_EMAIL + " TEXT NOT NULL, " +
-            UserContract.UserEntry.COLUMN_USER_PHONE +  " INTEGER NOT NULL, " +
+            UserContract.UserEntry.COLUMN_USER_PHONE + " INTEGER NOT NULL, " +
             ");";
 
     final String SQL_CREATE_PRODUCTS_TABLE = "CREATE TABLE " + ProductContract.ProductEntry.TABLE_NAME + " (" +
@@ -25,11 +25,23 @@ public class NutraWebDbHelper extends SQLiteOpenHelper {
             ProductContract.ProductEntry.COLUMN_PRODUCT_TITLE + " TEXT NOT NULL, " +
             ProductContract.ProductEntry.COLUMN__PRODUCT_DESCRIPTION + " TEXT NOT NULL, " +
             ProductContract.ProductEntry.COLUMN__PRODUCT_THUMB + " TEXT NOT NULL, " +
-            ProductContract.ProductEntry.COLUMN__PRODUCT_PRICE +  " INTEGER NOT NULL, " +
+            ProductContract.ProductEntry.COLUMN__PRODUCT_PRICE + " INTEGER NOT NULL, " +
             ");";
 
+    final String SQL_CREATE_SALE_TABLE = "CREATE TABLE " + SaleContract.SaletEntry.TABLE_NAME + " (" +
+            SaleContract.SaletEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            SaleContract.SaletEntry.COLUMN_SALE_NUMBER + " INTEGER NOT NULL, " +
+            SaleContract.SaletEntry.COLUMN_SALE_USER_ID + " INTEGER NOT NULL, " +
+            SaleContract.SaletEntry.COLUMN_SALE_DATE + " TEXT NOT NULL, " +
+            SaleContract.SaletEntry.COLUMN_SALE_QTY + " INTEGER NOT NULL, " +
+            SaleContract.SaletEntry.COLUMN_SALE_TOTAL + " INTEGER NOT NULL, " +
+            ");";
+
+    private int total;
+
+
     public NutraWebDbHelper(Context context) {
-        super(context,DATABASE_NAME,null,DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -37,12 +49,14 @@ public class NutraWebDbHelper extends SQLiteOpenHelper {
 
         db.execSQL(SQL_CREATE_USERS_TABLE);
         db.execSQL(SQL_CREATE_PRODUCTS_TABLE);
+        db.execSQL(SQL_CREATE_SALE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + UserContract.UserEntry.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + ProductContract.ProductEntry.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + SaleContract.SaletEntry.TABLE_NAME);
 
         onCreate(db);
     }

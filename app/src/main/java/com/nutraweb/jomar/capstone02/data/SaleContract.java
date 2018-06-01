@@ -15,18 +15,18 @@ public class SaleContract {
 
             public static final String TABLE_NAME = "sales";
             public static final String COLUMN_SALE_NUMBER = "sale_number";
-            public static final String COLUMN__SALE_USER_ID = "user_id";
-            public static final String COLUMN__SALE_DATE = "date";
-            public static final String COLUMN__SALE_QTY = "qty";
-            public static final String COLUMN__SALE_TOTAL = "total";
+            public static final String COLUMN_SALE_USER_ID = "user_id";
+            public static final String COLUMN_SALE_DATE = "date";
+            public static final String COLUMN_SALE_QTY = "qty";
+            public static final String COLUMN_SALE_TOTAL = "total";
 
 
             public static final String[] MAIN_SALE_PROJECTION = {
                     SaleContract.SaletEntry.COLUMN_SALE_NUMBER,
-                    SaleContract.SaletEntry.COLUMN__SALE_USER_ID,
-                    SaleContract.SaletEntry.COLUMN__SALE_DATE,
-                    SaleContract.SaletEntry.COLUMN__SALE_QTY,
-                    SaleContract.SaletEntry.COLUMN__SALE_TOTAL
+                    SaleContract.SaletEntry.COLUMN_SALE_USER_ID,
+                    SaleContract.SaletEntry.COLUMN_SALE_DATE,
+                    SaleContract.SaletEntry.COLUMN_SALE_QTY,
+                    SaleContract.SaletEntry.COLUMN_SALE_TOTAL
             };
 
             public static final int COLUMN_INDEX_SALE_NUMBER = 0;
