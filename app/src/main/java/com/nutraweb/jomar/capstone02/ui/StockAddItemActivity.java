@@ -1,5 +1,7 @@
 package com.nutraweb.jomar.capstone02.ui;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
@@ -35,6 +37,8 @@ public class StockAddItemActivity extends AppCompatActivity implements StockAddA
     private final Type productListType = new TypeToken<ArrayList<ProductEntity>>(){}.getType();
     private StockAddAdapter stockAddAdapter;
     private ProductListener productClickListener;
+    private static final String MY_OBJECT = "myObj";
+
 
     public interface ProductListener {
         void onProductClicked(ProductEntity productEntity);
@@ -140,8 +144,11 @@ public class StockAddItemActivity extends AppCompatActivity implements StockAddA
     @Override
     public void onClick(ProductEntity product) {
         //productClickListener.onProductClicked(product);
-        Toast.makeText(this,R.string.error_loading_data,Toast.LENGTH_SHORT).show();
 
+        Context context = this;
+        Class destinationClass = ProductDetailActivity.class;
+        Intent intentToStartMovieDetailsActivity = new Intent(this, destinationClass).putExtra(MY_OBJECT, product);
+        startActivity(intentToStartMovieDetailsActivity);
 
     }
 }

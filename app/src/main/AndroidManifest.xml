@@ -39,12 +39,15 @@
         <activity
             android:name=".ui.CustomerAddActivity"
             android:label="@string/title_activity_customer_add"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.SalesDashBoardActivity"
             android:label="@string/title_activity_sales_add"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.ProductDetailActivity"
+            android:label="@string/title_activity_product_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
