@@ -132,4 +132,5 @@
     <string name="title_add_customer">Add Customer</string>
     <string name="sales_sell_toolbar">New Order</string>
     <string name="title_activity_product_detail">ProductDetailActivity</string>
+    <string name="title_Add_Item_Stock">Add Item to Stock</string>
 </resources>
