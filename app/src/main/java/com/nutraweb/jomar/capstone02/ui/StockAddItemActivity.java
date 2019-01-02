@@ -143,12 +143,10 @@ public class StockAddItemActivity extends AppCompatActivity implements StockAddA
 
     @Override
     public void onClick(ProductEntity product) {
-        //productClickListener.onProductClicked(product);
-
         Context context = this;
         Class destinationClass = ProductDetailActivity.class;
-        Intent intentToStartMovieDetailsActivity = new Intent(this, destinationClass).putExtra(MY_OBJECT, product);
-        startActivity(intentToStartMovieDetailsActivity);
+        Intent intentToOpenAddItemActivity = new Intent(this, destinationClass).putExtra(MY_OBJECT, product);
+        startActivity(intentToOpenAddItemActivity);
 
     }
 }
