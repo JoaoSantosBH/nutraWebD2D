@@ -133,4 +133,12 @@
     <string name="sales_sell_toolbar">New Order</string>
     <string name="title_activity_product_detail">ProductDetailActivity</string>
     <string name="title_Add_Item_Stock">Add Item to Stock</string>
+    <string name="select_qty">Select amount itens to add</string>
+    <string name="initial_quantity_value">0</string>
+    <string name="quantity">quantity</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="total_products">Total</string>
+    <string name="total_products_value">0</string>
+    <string name="price_textView_value">0</string>
 </resources>
