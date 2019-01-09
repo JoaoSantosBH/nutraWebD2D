@@ -141,4 +141,7 @@
     <string name="total_products">Total</string>
     <string name="total_products_value">0</string>
     <string name="price_textView_value">0</string>
+    <string name="addedItem">Item added to stock!</string>
+    <string name="addedItemNoQty">Please select item quanti!!ty</string>
+    <string name="the_item_is_on_stock">The item is already on stock!</string>
 </resources>

@@ -9,13 +9,11 @@ import android.os.Parcelable;
 
 public class StockEntity implements Parcelable {
 
-    private int productId;
     private String productName;
     private String thumb;
     private int qty;
 
     protected StockEntity(Parcel in) {
-        productId = in.readInt();
         productName = in.readString();
         thumb = in.readString();
         qty = in.readInt();
@@ -33,13 +31,6 @@ public class StockEntity implements Parcelable {
         }
     };
 
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
 
     public String getProductName() {
         return productName;
@@ -72,7 +63,6 @@ public class StockEntity implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(productId);
         parcel.writeString(productName);
         parcel.writeString(thumb);
         parcel.writeInt(qty);

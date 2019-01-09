@@ -48,6 +48,12 @@
             android:name=".ui.ProductDetailActivity"
             android:label="@string/title_activity_product_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <provider
+            android:name=".data.StockProvider"
+            android:authorities="com.nutraweb.jomar.capstone02"
+            android:exported="false" />
+
     </application>
 
 </manifest>
