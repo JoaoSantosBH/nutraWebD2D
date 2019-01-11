@@ -78,8 +78,16 @@ public class StockDashBoardActivity extends AppCompatActivity implements StockDa
 
                 break;
             case LIST_STOCK:
-                Toast.makeText(this,LIST_STOCK, Toast.LENGTH_SHORT).show();
-                break;
+                Intent j = new Intent(this, StockListItensActivity.class);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    // Apply activity transition
+                    startActivity(j,
+                            ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+
+                } else {
+                    // Swap without transitioni
+                    startActivity(j);
+                }                break;
 
         }
 

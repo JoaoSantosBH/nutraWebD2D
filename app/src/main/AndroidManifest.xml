@@ -48,7 +48,10 @@
             android:name=".ui.ProductDetailActivity"
             android:label="@string/title_activity_product_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-
+<activity
+            android:name=".ui.StockListItensActivity"
+            android:label="@string/title_stoc_list_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <provider
             android:name=".data.StockProvider"
             android:authorities="com.nutraweb.jomar.capstone02"

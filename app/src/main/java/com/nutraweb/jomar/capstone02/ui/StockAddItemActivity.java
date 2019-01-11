@@ -86,7 +86,6 @@ public class StockAddItemActivity extends AppCompatActivity implements StockAddA
 
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
-
         stockAddAdapter = new StockAddAdapter(this);
         mRecyclerView.setAdapter(stockAddAdapter);
 

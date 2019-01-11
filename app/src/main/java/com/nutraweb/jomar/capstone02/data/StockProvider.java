@@ -17,7 +17,7 @@ import android.support.annotation.Nullable;
 
 public class StockProvider extends ContentProvider{
     public static final int STOC_ITEM = 0;
-    public static final int CODE_MOVIE_ID = 1;
+    public static final int CODE_STOCK_ID = 1;
     private static UriMatcher sUriMatcher = buildUriMatcher();
     private NutraWebDbHelper mOpenDbHelper;
 
@@ -151,7 +151,7 @@ public class StockProvider extends ContentProvider{
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
         int numRowsUpdated;
         switch (sUriMatcher.match(uri)){
-            case CODE_MOVIE_ID:
+            case CODE_STOCK_ID:
                 numRowsUpdated = mOpenDbHelper.getWritableDatabase().update(
                         StockContract.StockEntry.TABLE_NAME,
                         values,
