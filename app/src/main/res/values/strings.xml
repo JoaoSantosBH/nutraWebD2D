@@ -146,4 +146,10 @@
     <string name="the_item_is_on_stock">The item is already on stock!</string>
     <string name="title_stoc_list_detail">My Stock</string>
     <string name="title_list_stock">My Stock</string>
+    <string name="user_add_txt_name">Name</string>
+    <string name="user_add_txt_phone">Phone</string>
+    <string name="user_add_txt_email">Email</string>
+    <string name="the_user_already_exist">The User already exist!!</string>
+    <string name="addedUser">User added!!!</string>
+    <string name="user_add_please_fill_all_fields">Please fill all fields</string>
 </resources>

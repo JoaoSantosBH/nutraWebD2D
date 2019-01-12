@@ -142,18 +142,18 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             protected Void doInBackground(Void... params) {
 
-                ContentValues movieValues = new ContentValues();
+                ContentValues valuesProd = new ContentValues();
 
-                movieValues.put(StockContract.StockEntry.COLUMN_STOCK_PRODUCT_NAME,
+                valuesProd.put(StockContract.StockEntry.COLUMN_STOCK_PRODUCT_NAME,
                         product.getTitulo());
-                movieValues.put(StockContract.StockEntry.COLUMN_STOCK_THUMB,
+                valuesProd.put(StockContract.StockEntry.COLUMN_STOCK_THUMB,
                         product.getUrl());
-                movieValues.put(StockContract.StockEntry.COLUMN_STOCK_QTY,
+                valuesProd.put(StockContract.StockEntry.COLUMN_STOCK_QTY,
                         mQuantity);
 
                 getContentResolver().insert(
                         StockContract.StockEntry.CONTENT_URI,
-                        movieValues
+                        valuesProd
                 );
                 return null;
             }

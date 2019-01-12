@@ -76,8 +76,6 @@ public class StockAddAdapter extends RecyclerView.Adapter<StockAddAdapter.MenuVi
         Context context = menuViewHolder.itemView.getContext();
         ProductEntity productEntity = list.get(position);
 
-
-
         Typeface customFont = Typeface.createFromAsset(context.getAssets(), "fonts/Montserrat-Bold.ttf");
         menuViewHolder.name.setText(productEntity.getTitulo());
         menuViewHolder.name.setTypeface(customFont);

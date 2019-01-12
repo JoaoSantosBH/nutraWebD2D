@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Name" />
+        android:hint="@string/user_add_txt_name" />
 
     <EditText
         android:id="@+id/addCustomerEditTextPhone"
@@ -35,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCustomerEditTextName"
-        tools:text="Phone" />
+        android:hint="@string/user_add_txt_phone"/>
 
     <EditText
         android:id="@+id/addCustomerEditTextEmail"
@@ -49,5 +49,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCustomerEditTextPhone"
-        tools:text="Email" />
+        android:hint="@string/user_add_txt_email"
+ />
 </android.support.constraint.ConstraintLayout>

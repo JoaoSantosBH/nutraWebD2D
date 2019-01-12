@@ -15,6 +15,10 @@ public class UserEntity implements Parcelable {
     private String email;
     private int phoneNumber;
 
+    public UserEntity() {
+
+    }
+
     public String getName() {
         return name;
     }
@@ -39,7 +43,7 @@ public class UserEntity implements Parcelable {
         this.phoneNumber = phoneNumber;
     }
 
-    protected UserEntity(Parcel in) {
+    public UserEntity(Parcel in) {
         name = in.readString();
         email = in.readString();
         phoneNumber = in.readInt();

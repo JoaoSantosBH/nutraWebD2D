@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class NutraWebDbHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "nutra.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
 
     final String SQL_CREATE_USERS_TABLE = "CREATE TABLE " + UserContract.UserEntry.TABLE_NAME + " (" +

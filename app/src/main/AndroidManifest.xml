@@ -56,7 +56,10 @@
             android:name=".data.StockProvider"
             android:authorities="com.nutraweb.jomar.capstone02"
             android:exported="false" />
-
+        <provider
+            android:name=".data.UserProvider"
+            android:authorities="com.nutraweb.jomar.capstone02a"
+            android:exported="false" />
     </application>
 
 </manifest>
