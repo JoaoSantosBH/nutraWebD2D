@@ -49,31 +49,26 @@ public class CustomerAddActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                    String n = name.getText().toString();
+                    String p = phone.getText().toString();
+                    String e = email.getText().toString();
 
-                user.setName(name.getText().toString());
-                Log.e("VALOR ", phone.getText().toString());
-
-                String pho = phone.getText().toString();
-                if (pho.matches("")){
-                    user.setPhoneNumber(0);
-
-                } else {
-
+                if (!n.equals("") && !p.equals("") && !e.equals("")){
+                    user.setName(name.getText().toString());
                     user.setPhoneNumber(Integer.valueOf(phone.getText().toString()));
-                }
-                user.setEmail(email.getText().toString());
-                userExist = userExist();
-                if(!userExist ){
-                    if (!user.getName().equals("") && pho.matches("") && !user.getEmail().equals("")  ) {
+                    user.setEmail(email.getText().toString());
+                    userExist = userExist();
+                    if(!userExist ) {
                         addUser();
+                        name.setText("");phone.setText("");email.setText("");
                         Snackbar.make(view, R.string.addedUser, Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     } else {
-                        Snackbar.make(view, R.string.user_add_please_fill_all_fields, Snackbar.LENGTH_LONG)
+                        Snackbar.make(view, R.string.the_user_already_exist, Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
-                    }
-                } else {
-                    Snackbar.make(view, R.string.the_user_already_exist, Snackbar.LENGTH_LONG)
+                        }
+                }else {
+                    Snackbar.make(view, R.string.user_add_please_fill_all_fields, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
 
