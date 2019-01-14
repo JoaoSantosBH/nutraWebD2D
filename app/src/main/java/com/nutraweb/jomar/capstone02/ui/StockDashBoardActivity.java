@@ -21,7 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class StockDashBoardActivity extends AppCompatActivity implements StockDashBoardAdapter.MenuAdapterClickHandler {
+    public class StockDashBoardActivity extends AppCompatActivity implements StockDashBoardAdapter.MenuAdapterClickHandler {
 
 
     private static final String ADD_ITEM = "Add Item on Stock";

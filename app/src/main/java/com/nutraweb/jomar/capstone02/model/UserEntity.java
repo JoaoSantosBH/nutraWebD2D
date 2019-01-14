@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 
 public class UserEntity implements Parcelable {
-
+    private int _id;
     private String name;
     private String email;
     private int phoneNumber;
@@ -44,6 +44,7 @@ public class UserEntity implements Parcelable {
     }
 
     public UserEntity(Parcel in) {
+        _id = in.readInt();
         name = in.readString();
         email = in.readString();
         phoneNumber = in.readInt();
@@ -68,8 +69,20 @@ public class UserEntity implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(_id);
         parcel.writeString(name);
         parcel.writeString(email);
         parcel.writeInt(phoneNumber);
+    }
+    @Override
+    public String toString() {
+        return name;
+    }
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
     }
 }

@@ -9,12 +9,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.nutraweb.jomar.capstone02.R;
-import com.nutraweb.jomar.capstone02.data.StockContract;
 import com.nutraweb.jomar.capstone02.data.UserContract;
 import com.nutraweb.jomar.capstone02.model.UserEntity;
 
@@ -71,7 +69,6 @@ public class CustomerAddActivity extends AppCompatActivity {
                     Snackbar.make(view, R.string.user_add_please_fill_all_fields, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
-
             }
         });
     }

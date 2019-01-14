@@ -17,10 +17,32 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Spinner
+                android:id="@+id/spinner_users"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="32dp"
+                android:backgroundTint="@color/colorAccent"
+                />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_stcok_sales_recycler_view"
+            android:clipToPadding="false"
+            android:scrollbarStyle="outsideOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_sell_new" />
+    <!--<include layout="@layout/content_sell_new" />-->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/new_sale_fab"

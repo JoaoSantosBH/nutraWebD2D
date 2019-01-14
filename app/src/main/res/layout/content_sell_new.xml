@@ -1,11 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.nutraweb.jomar.capstone02.ui.StockAddItemActivity"
-    tools:showIn="@layout/activity_sales_sellr">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
 
-</android.support.constraint.ConstraintLayout>
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?selectableItemBackground"
+    android:stateListAnimator="@animator/lift_on_touch"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardBackgroundColor="@android:color/transparent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/list_user_stock_sale_thumb"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/menu_image" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/list_user_stock_sale_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="22sp"
+                android:textStyle="normal|bold"
+                tools:text="Title" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/list_user_stock_sale_qty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="22sp"
+            android:textStyle="normal|bold"
+            tools:text="qty" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
