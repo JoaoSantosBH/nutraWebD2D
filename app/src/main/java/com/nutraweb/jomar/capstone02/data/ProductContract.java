@@ -12,12 +12,13 @@ import android.provider.BaseColumns;
 public class ProductContract {
 
 
-    public static final String CONTENT_AUTHORITY = "com.nutraweb.jomar.capstone02";
-    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
-    public static final String PATH_PRODUCTS = "products";
+
 
     public static final class ProductEntry implements BaseColumns {
 
+        public static final String CONTENT_AUTHORITY = "com.nutraweb.jomar.capstone02b";
+        public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+        public static final String PATH_PRODUCTS = "products";
         public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon()
                 .appendPath(PATH_PRODUCTS)
                 .build();

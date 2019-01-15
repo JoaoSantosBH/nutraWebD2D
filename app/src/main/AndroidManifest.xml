@@ -60,6 +60,24 @@
             android:name=".data.UserProvider"
             android:authorities="com.nutraweb.jomar.capstone02a"
             android:exported="false" />
+        <provider
+            android:name=".data.ProductProvider"
+            android:authorities="com.nutraweb.jomar.capstone02b"
+            android:exported="false" />
+        <service
+            android:name=".sync.NutraWebSyncIntentService"
+            android:exported="false" />
+
+        <!-- COMPLETED (8) Declare SunshineFirebaseJobService as a service in the manifest -->
+        <!-- This is the Service declaration used in conjunction with FirebaseJobDispatcher -->
+        <service
+            android:name=".sync.NutraWebFirebaseJobService"
+            android:exported="false">
+            <!-- COMPLETED (9) Declare an intent filter with the action ACTION_EXECUTE -->
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

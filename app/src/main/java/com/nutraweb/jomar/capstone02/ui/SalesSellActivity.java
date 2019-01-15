@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -16,8 +17,10 @@ import android.widget.Spinner;
 import com.nutraweb.jomar.capstone02.R;
 import com.nutraweb.jomar.capstone02.adapter.SaleSellAdapter;
 import com.nutraweb.jomar.capstone02.adapter.StockListAdapter;
+import com.nutraweb.jomar.capstone02.data.ProductContract;
 import com.nutraweb.jomar.capstone02.data.StockContract;
 import com.nutraweb.jomar.capstone02.data.UserContract;
+import com.nutraweb.jomar.capstone02.model.ProductEntity;
 import com.nutraweb.jomar.capstone02.model.StockEntity;
 import com.nutraweb.jomar.capstone02.model.UserEntity;
 
@@ -32,7 +35,7 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
 
     private SaleSellAdapter saleSellAdapter;
     private List<StockEntity> stockEntities;
-
+    private List<ProductEntity> saleList;
     private GridLayoutManager layoutManager;
 
 
@@ -137,8 +140,40 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         }
     }
 
+
+    private String getProductValue(StockEntity item){
+        String value= "";
+        Cursor itemCursor = getContentResolver().query(
+                ProductContract.ProductEntry.CONTENT_URI,
+                new String[]{ProductContract.ProductEntry.COLUMN__PRODUCT_PRICE},
+                ProductContract.ProductEntry.COLUMN_PRODUCT_TITLE + " = '" +item.getProductName() + "' ;",
+                null,
+                null);
+
+        if (itemCursor != null ) {
+            if (itemCursor.moveToFirst()){
+//                int i = itemCursor.getInt();
+                value =itemCursor.getString(itemCursor.getColumnIndex(ProductContract.ProductEntry.COLUMN__PRODUCT_PRICE));
+                Log.e("VVVVAAALLLUUUEEE", value);
+            }
+
+            itemCursor.close();
+            return value;
+
+        } else {
+            return value;
+        }
+    }
     @Override
     public void onClick(StockEntity item) {
+
+            Float price = Float.valueOf(getProductValue(item));
+            addItemOnSale(item);
+    }
+
+    private void addItemOnSale(StockEntity item) {
+        //decrement itemStock qty
+        //sum total
 
     }
 }

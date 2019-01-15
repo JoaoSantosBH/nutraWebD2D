@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.github.ybq.android.spinkit.SpinKitView;
 import com.nutraweb.jomar.capstone02.R;
 import com.nutraweb.jomar.capstone02.adapter.DashboardAdapter;
+import com.nutraweb.jomar.capstone02.sync.NutraWebSyncUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +55,7 @@ public class DashBoardActivity extends AppCompatActivity implements DashboardAda
         mAdapter = new DashboardAdapter(this);
         mAdapter.setList(lista);
         mRecyclerView.setAdapter(mAdapter);
+        NutraWebSyncUtils.initialize(this);
 
     }
 
