@@ -61,6 +61,7 @@ public class SaleSellAdapter  extends RecyclerView.Adapter<SaleSellAdapter.MenuV
             int position = getAdapterPosition();
             StockEntity item = list.get(position);
             mClickHandler.onClick(item);
+
         }
     }
 

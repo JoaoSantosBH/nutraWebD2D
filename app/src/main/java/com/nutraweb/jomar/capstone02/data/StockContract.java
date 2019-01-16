@@ -23,6 +23,7 @@ public class StockContract {
 
         public static final String TABLE_NAME = "stock";
         public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_STOCK;
+        public static final String CONTENT_TYPE2 = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_STOCK;
 
     public static Uri buildStockUri(Long id){
         return ContentUris.withAppendedId(CONTENT_URI, id);

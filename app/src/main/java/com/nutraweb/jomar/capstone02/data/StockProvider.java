@@ -25,6 +25,7 @@ public class StockProvider extends ContentProvider{
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
         final String authorithy = StockContract.StockEntry.CONTENT_AUTHORITY;
         matcher.addURI(authorithy, StockContract.StockEntry.PATH_STOCK, STOC_ITEM);
+        matcher.addURI(authorithy, StockContract.StockEntry.PATH_STOCK+"/#", CODE_STOCK_ID);
         return matcher;
     }
 
@@ -118,7 +119,8 @@ public class StockProvider extends ContentProvider{
         switch (sUriMatcher.match(uri)){
             case STOC_ITEM:
                 return StockContract.StockEntry.CONTENT_TYPE;
-
+            case CODE_STOCK_ID:
+                return StockContract.StockEntry.CONTENT_TYPE2;
             default:
                 throw new UnsupportedOperationException("Unknown Uri" + uri);
         }
@@ -151,7 +153,7 @@ public class StockProvider extends ContentProvider{
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
         int numRowsUpdated;
         switch (sUriMatcher.match(uri)){
-            case CODE_STOCK_ID:
+            case STOC_ITEM:
                 numRowsUpdated = mOpenDbHelper.getWritableDatabase().update(
                         StockContract.StockEntry.TABLE_NAME,
                         values,
