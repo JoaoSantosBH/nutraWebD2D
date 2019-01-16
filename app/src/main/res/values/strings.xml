@@ -152,4 +152,6 @@
     <string name="the_user_already_exist">The User already exist!!</string>
     <string name="addedUser">User added!!!</string>
     <string name="user_add_please_fill_all_fields">Please fill all fields</string>
+    <string name="total_sale">0</string>
+    <string name="cifer">$</string>
 </resources>

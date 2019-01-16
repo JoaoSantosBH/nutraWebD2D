@@ -68,6 +68,7 @@ public class StockListItensActivity extends AppCompatActivity implements StockLi
     do {
             s  = new StockEntity();
             s.set_id(itemCursor.getInt(StockContract.StockEntry.COLUMN_INDEX_STOCK_PRODUCT_ID));
+            s.setProductId(itemCursor.getString(StockContract.StockEntry.COLUMN_INDEX_STOCK_PRODUCTID));
             s.setProductName(itemCursor.getString(StockContract.StockEntry.COLUMN_INDEX_STOCK_PRODUCT_NAME));
             s.setThumb(itemCursor.getString(StockContract.StockEntry.COLUMN_INDEX_STOCK_THUMB));
             s.setQty(itemCursor.getInt(StockContract.StockEntry.COLUMN_INDEX_STOCK_QTY));

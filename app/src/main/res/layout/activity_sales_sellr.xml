@@ -11,6 +11,9 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
+
+
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/sales_sell_toolbar"
             android:layout_width="match_parent"
@@ -25,10 +28,9 @@
                 android:id="@+id/spinner_users"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
                 android:layout_marginBottom="32dp"
-                android:backgroundTint="@color/colorAccent"
-                />
+                android:layout_marginTop="64dp"
+                android:backgroundTint="@color/colorAccent" />
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
@@ -39,11 +41,35 @@
             android:layout_height="wrap_content"/>
 
 
-
     </android.support.design.widget.AppBarLayout>
 
     <!--<include layout="@layout/content_sell_new" />-->
+    <RelativeLayout
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="128dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cifer"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/totalSale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="Total Values of @string/sales_sell_toolbar"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="24sp"
+            android:text="@string/total_sale"
+            tools:text="0" />
+    </RelativeLayout>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/new_sale_fab"
         android:layout_width="wrap_content"

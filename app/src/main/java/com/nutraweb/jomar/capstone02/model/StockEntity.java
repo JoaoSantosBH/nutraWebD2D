@@ -11,12 +11,14 @@ public class StockEntity implements Parcelable {
 
 
     private int _id;
+    private String productId;
     private String productName;
     private String thumb;
     private int qty;
 
     public StockEntity(Parcel in) {
         _id = in.readInt();
+        productId = in.readString();
         productName = in.readString();
         thumb = in.readString();
         qty = in.readInt();
@@ -77,8 +79,17 @@ public class StockEntity implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(_id);
+        parcel.writeString(productId);
         parcel.writeString(productName);
         parcel.writeString(thumb);
         parcel.writeInt(qty);
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 }

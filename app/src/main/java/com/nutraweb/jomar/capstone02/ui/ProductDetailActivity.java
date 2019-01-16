@@ -143,7 +143,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             protected Void doInBackground(Void... params) {
 
                 ContentValues valuesProd = new ContentValues();
-
+                valuesProd.put(StockContract.StockEntry.COLUMN_STOCK_PRODUCTID, product.getProductid());
                 valuesProd.put(StockContract.StockEntry.COLUMN_STOCK_PRODUCT_NAME,
                         product.getTitulo());
                 valuesProd.put(StockContract.StockEntry.COLUMN_STOCK_THUMB,

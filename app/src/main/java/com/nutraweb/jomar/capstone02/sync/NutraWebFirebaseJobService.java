@@ -11,20 +11,8 @@ import com.firebase.jobdispatcher.JobService;
 
 public class NutraWebFirebaseJobService extends JobService {
 
-    //  COMPLETED (4) Declare an ASyncTask field called mFetchProductsTask
     private AsyncTask<Void, Void, Void> mFetchProductsTask;
 
-//  COMPLETED (5) Override onStartJob and within it, spawn off a separate ASyncTask to sync weather data
-    /**
-     * The entry point to your Job. Implementations should offload work to another thread of
-     * execution as soon as possible.
-     *
-     * This is called by the Job Dispatcher to tell us we should start our job. Keep in mind this
-     * method is run on the application's main thread, so we need to offload work to a background
-     * thread.
-     *
-     * @return whether there is more work remaining.
-     */
     @Override
     public boolean onStartJob(final JobParameters jobParameters) {
 

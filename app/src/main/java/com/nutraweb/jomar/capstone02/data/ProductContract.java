@@ -25,6 +25,7 @@ public class ProductContract {
 
         public static final String TABLE_NAME = "products";
         public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_PRODUCTS;
+        public static final String COLUMN_PRODUCT_PRODUCTID = "productid";
         public static final String COLUMN_PRODUCT_TITLE = "titulo";
         public static final String COLUMN__PRODUCT_DESCRIPTION = "descricao";
         public static final String COLUMN__PRODUCT_THUMB = "url";
@@ -37,17 +38,18 @@ public class ProductContract {
         }
 
         public static final String[] MAIN_PRODUCT_PROJECTION = {
-
+                ProductEntry.COLUMN_PRODUCT_PRODUCTID,
                 ProductEntry.COLUMN_PRODUCT_TITLE,
                 ProductEntry.COLUMN__PRODUCT_DESCRIPTION,
                 ProductEntry.COLUMN__PRODUCT_THUMB,
                 ProductEntry.COLUMN__PRODUCT_PRICE
         };
 
-        public static final int COLUMN_INDEX_PRODUCT_TITLE = 0;
-        public static final int COLUMN_INDEX_PRODUCT_DESCRIPTION = 1;
-        public static final int COLUMN_INDEX_PRODUCT_THUMB = 2 ;
-        public static final int COLUMN_INDEX_PRODUCT_PRICE = 3 ;
+        public static final int COLUMN_INDEX_PRODUCT_PRODUCTID =0 ;
+        public static final int COLUMN_INDEX_PRODUCT_TITLE = 1;
+        public static final int COLUMN_INDEX_PRODUCT_DESCRIPTION = 2;
+        public static final int COLUMN_INDEX_PRODUCT_THUMB = 3 ;
+        public static final int COLUMN_INDEX_PRODUCT_PRICE = 4 ;
 
     }
 }

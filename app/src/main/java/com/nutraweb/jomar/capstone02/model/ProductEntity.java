@@ -8,12 +8,38 @@ import android.os.Parcelable;
  */
 
 public class ProductEntity implements Parcelable {
+    private String productid;
     private String titulo;
     private String descricao;
     private String url;
+    public String getProductid() {
+        return productid;
+    }
+
+    public void setProductid(String productid) {
+        this.productid = productid;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
+
     private int valor;
 
     public ProductEntity(Parcel in) {
+        productid = in.readString();
         titulo = in.readString();
         descricao = in.readString();
         url = in.readString();
@@ -30,6 +56,10 @@ public class ProductEntity implements Parcelable {
             return new ProductEntity[size];
         }
     };
+
+    public ProductEntity() {
+
+    }
 
     public String getTitulo() {
         return titulo;
@@ -55,6 +85,7 @@ public class ProductEntity implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(productid);
         dest.writeString(titulo);
         dest.writeString(descricao);
         dest.writeString(url);

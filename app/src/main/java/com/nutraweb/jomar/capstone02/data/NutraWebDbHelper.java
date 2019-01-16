@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class NutraWebDbHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "nutra.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
 
     final String SQL_CREATE_USERS_TABLE = "CREATE TABLE " + UserContract.UserEntry.TABLE_NAME + " (" +
@@ -23,6 +23,7 @@ public class NutraWebDbHelper extends SQLiteOpenHelper {
 
     final String SQL_CREATE_PRODUCTS_TABLE = "CREATE TABLE " + ProductContract.ProductEntry.TABLE_NAME + " (" +
             ProductContract.ProductEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            ProductContract.ProductEntry.COLUMN_PRODUCT_PRODUCTID + " TEXT NOT NULL, " +
             ProductContract.ProductEntry.COLUMN_PRODUCT_TITLE + " TEXT NOT NULL, " +
             ProductContract.ProductEntry.COLUMN__PRODUCT_DESCRIPTION + " TEXT NOT NULL, " +
             ProductContract.ProductEntry.COLUMN__PRODUCT_THUMB + " TEXT NOT NULL, " +
@@ -40,6 +41,7 @@ public class NutraWebDbHelper extends SQLiteOpenHelper {
 
     final String SQL_CREATE_STOCK_TABLE = "CREATE TABLE " + StockContract.StockEntry.TABLE_NAME + " (" +
             StockContract.StockEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            StockContract.StockEntry.COLUMN_STOCK_PRODUCTID + " TEXT NOT NULL, " +
             StockContract.StockEntry.COLUMN_STOCK_PRODUCT_NAME + " TEXT NOT NULL, " +
             StockContract.StockEntry.COLUMN_STOCK_THUMB + " TEXT NOT NULL, " +
             StockContract.StockEntry.COLUMN_STOCK_QTY + " INTEGER NOT NULL " +

@@ -25,15 +25,17 @@ public class NutraWebSyncTask {
          final Type productListType = new TypeToken<ArrayList<ProductEntity>>(){}.getType();
 
         try {
+            String URL = "http://audiolabpp.com.br/img/nutraWeb_info/nutrawebJSON.json";
 
-            String jsonResponse = NetworkUtils.getHttpResponse("http://audiolabpp.com.br/img/nutraWeb_info/nutrawebJSON.json");
-            String mProductsJson;
+            String jsonResponse = NetworkUtils.getHttpResponse(URL);
+
             productEntityList = new Gson().fromJson(jsonResponse, productListType);
             ContentValues[]  values = new ContentValues[productEntityList.size()];
             int i=0;
             for (ProductEntity p :productEntityList){
 
                 ContentValues cv = new ContentValues();
+                cv.put(ProductContract.ProductEntry.COLUMN_PRODUCT_PRODUCTID, p.getProductid());
                 cv.put(ProductContract.ProductEntry.COLUMN_PRODUCT_TITLE,p.getTitulo());
                 cv.put(ProductContract.ProductEntry.COLUMN__PRODUCT_DESCRIPTION,p.getDescricao());
                 cv.put(ProductContract.ProductEntry.COLUMN__PRODUCT_THUMB,p.getUrl());
