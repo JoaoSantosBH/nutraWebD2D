@@ -2,6 +2,7 @@ package com.nutraweb.jomar.capstone02.ui;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 import com.nutraweb.jomar.capstone02.R;
 import com.nutraweb.jomar.capstone02.adapter.SaleSellAdapter;
 import com.nutraweb.jomar.capstone02.data.ProductContract;
+import com.nutraweb.jomar.capstone02.data.RankContract;
 import com.nutraweb.jomar.capstone02.data.StockContract;
 import com.nutraweb.jomar.capstone02.data.UserContract;
 import com.nutraweb.jomar.capstone02.model.ProductEntity;
@@ -39,7 +41,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SalesSellActivity extends AppCompatActivity implements SaleSellAdapter.MenuAdapterClickHandler {
-//aqui
+
 
     private SaleSellAdapter saleSellAdapter;
     private List<StockEntity> stockEntities;
@@ -121,14 +123,61 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         } // senao decremeta
         sale.setTotal(total);
         sale.getDate();
-        //ToDo        remover item do estoque
-        for (StockEntity st : stockEntities){
-            deleteItemStock(st.get_id());
+        for (StockEntity st : stockEntities) {
+            int qtyInStock = Integer.valueOf(getStockQty(st));
+            if (qtyInStock == 0) {
+                deleteItemStock(st.get_id());
+            }
+        }
+        sendEmail(sale);
+        userRank(sale.getUserId());
+
+
+    }
+
+    //ToDo        Incrementar contador de compras do usuário
+    private void userRank(int userId) {
+        int rank =0;
+        boolean userExist = verifyUserRegister(userId);
+        ContentValues valuesProd = new ContentValues();
+        valuesProd.put(RankContract.RankEntry.COLUMN_USER_ID,
+                userId);
+
+        if (userExist){
+            rank = getUserRank(userId);
+            rank++;
+
+        } else {
+            rank++;
         }
 
-        //ToDo        Enviar email com os dados da venda
-        //ToDo        Incrementar contador de compras do usuário
+        valuesProd.put(RankContract.RankEntry.COLUMN_RANK_ID,
+                rank);
 
+        getContentResolver().insert(
+                RankContract.RankEntry.CONTENT_URI,
+                valuesProd
+        );
+    }
+
+    private boolean verifyUserRegister(int userId) {
+        boolean exist = false;
+        String value = "";
+        Cursor itemCursor = getContentResolver().query(
+                RankContract.RankEntry.CONTENT_URI,
+                new String[]{String.valueOf(RankContract.RankEntry.COLUMN_USER_ID)},
+                RankContract.RankEntry.COLUMN_USER_ID + " = ?",
+                new String[]{String.valueOf(userId)},
+                null);
+
+        if (itemCursor != null) {
+            if (itemCursor.moveToFirst()) {
+                value = itemCursor.getString(itemCursor.getColumnIndex(RankContract.RankEntry.COLUMN_USER_RANK));
+                exist = true;
+            }
+
+        }
+        return exist;
     }
 
     public static String buyOrderNumber() {
@@ -136,14 +185,14 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         Calendar today = Calendar.getInstance();
         SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
         String now = s.format(today.getTime());
-        String dataQuebrada[] = now.split(" ");
-        String dataSemHoras = dataQuebrada[0];
-        String dataPre[] = dataSemHoras.split("-");
-        String anoS = dataPre[0];
-        String mesS = dataPre[1];
-        String diaS = dataPre[2];
-        String fim = anoS + mesS + diaS;
-        return fim;
+        String brokenDate[] = now.split(" ");
+        String dateWhitoutHour = brokenDate[0];
+        String dataPre[] = dateWhitoutHour.split("-");
+        String yS = dataPre[0];
+        String mS = dataPre[1];
+        String dS = dataPre[2];
+        String result = yS + mS + dS;
+        return result;
     }
 
     private List<UserEntity> getCustomers() {
@@ -173,11 +222,37 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         }
     }
 
+    private ProductEntity getProductWihtItemProductId(String id) {
+        ProductEntity p = null;
+        Cursor itemCursor = getContentResolver().query(
+                ProductContract.ProductEntry.CONTENT_URI,
+                ProductContract.ProductEntry.MAIN_PRODUCT_PROJECTION,
+                ProductContract.ProductEntry.COLUMN_PRODUCT_PRODUCTID + " = ?",
+                new String[]{String.valueOf(id)},
+                null);
+
+        if (itemCursor != null && itemCursor.moveToFirst()) {
+            do {
+                p = new ProductEntity();
+                p.setProductid(itemCursor.getString(ProductContract.ProductEntry.COLUMN_INDEX_PRODUCT_PRODUCTID));
+                p.setTitulo(itemCursor.getString(ProductContract.ProductEntry.COLUMN_INDEX_PRODUCT_TITLE));
+                p.setDescricao(itemCursor.getString(ProductContract.ProductEntry.COLUMN_INDEX_PRODUCT_DESCRIPTION));
+                p.setUrl(itemCursor.getString(ProductContract.ProductEntry.COLUMN_INDEX_PRODUCT_THUMB));
+                p.setValor(itemCursor.getInt(ProductContract.ProductEntry.COLUMN_INDEX_PRODUCT_PRICE));
+
+            } while (itemCursor.moveToNext());
+
+            itemCursor.close();
+            return p;
+        } else {
+            return p;
+        }
+    }
+
     private ProductEntity getProduct(int id) {
         ProductEntity p;
-        ProductEntity sale = null;
         Cursor itemCursor = getContentResolver().query(
-                StockContract.StockEntry.CONTENT_URI,
+                ProductContract.ProductEntry.CONTENT_URI,
                 null,
                 null,
                 null,
@@ -241,9 +316,10 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
                 new String[]{String.valueOf(id)}
         );
     }
-    private void deleteItemStock(int id){
-    ContentValues cv = new ContentValues();
-    cv.put(StockContract.StockEntry.COLUMN_STOCK_ID,id);
+
+    private void deleteItemStock(int id) {
+        ContentValues cv = new ContentValues();
+        cv.put(StockContract.StockEntry.COLUMN_STOCK_ID, id);
         getContentResolver().delete(
                 StockContract.StockEntry.CONTENT_URI,
                 StockContract.StockEntry.COLUMN_STOCK_ID + " =? ",
@@ -313,7 +389,7 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
 
     private void addItemOnSale(StockEntity item, int price) {
         //decrement itemStock qty
-        ProductEntity p = getProduct(Integer.valueOf(item.getProductId()));
+        ProductEntity p = getProductWihtItemProductId(item.getProductId());
         saleList.add(p);
         totalSale = sumOrderTotal();
         total.setText(String.valueOf(totalSale));
@@ -330,21 +406,28 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
 
 //    Enviar email para usuario informando da venda bem sucedida
 
-//    public void sendEmail(View view) {
-//        String body = "";
-//        String emailMessage = getString(R.string.email_message);
-//
-//        // Use an intent to launch an email app.
-//        // Send the order summary in the email body.
-//        Intent intent = new Intent(Intent.ACTION_SENDTO);
-//        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-//        intent.putExtra(Intent.EXTRA_SUBJECT,
-//                getString(R.string.order_summary_email_subject));
-//        intent.putExtra(Intent.EXTRA_TEXT, emailMessage);
-//
-//        if (intent.resolveActivity(getPackageManager()) != null) {
-//            startActivity(intent);
-//
-//        }
-//    }
+    public void sendEmail(SaleEntity sale) {
+        String subject = getString(R.string.email_subject);
+        subject += " " + sale.getNumberSale();
+        String emailMessage = "";
+        String total = String.valueOf(sale.getTotal());
+
+        for (ProductEntity p : sale.getItens()) {
+            emailMessage += p.getTitulo() + getString(R.string.email_format);
+            emailMessage += p.getValor() + "\n";
+        }
+
+        emailMessage += getString(R.string.email_total) + total;
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setType("message/rfc822");
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, emailMessage);
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+
+        }
+    }
 }

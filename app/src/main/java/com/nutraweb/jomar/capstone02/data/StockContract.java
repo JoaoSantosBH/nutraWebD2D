@@ -28,6 +28,8 @@ public class StockContract {
     public static Uri buildStockUri(Long id){
         return ContentUris.withAppendedId(CONTENT_URI, id);
     }
+
+
         public static final String COLUMN_STOCK_ID = "_id";
         public static final String COLUMN_STOCK_PRODUCTID = "product_id";
         public static final String COLUMN_STOCK_PRODUCT_NAME = "product_name";

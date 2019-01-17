@@ -154,4 +154,7 @@
     <string name="user_add_please_fill_all_fields">Please fill all fields</string>
     <string name="total_sale">0</string>
     <string name="cifer">$</string>
+    <string name="email_subject">Thanx for Your Order Number: </string>
+    <string name="email_total">TOTAL : $ </string>
+    <string name="email_format">$</string>
 </resources>

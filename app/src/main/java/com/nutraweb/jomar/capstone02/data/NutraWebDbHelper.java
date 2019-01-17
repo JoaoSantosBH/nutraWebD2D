@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class NutraWebDbHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "nutra.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
 
     final String SQL_CREATE_USERS_TABLE = "CREATE TABLE " + UserContract.UserEntry.TABLE_NAME + " (" +
@@ -48,8 +48,11 @@ public class NutraWebDbHelper extends SQLiteOpenHelper {
 
             ");";
 
-    private int total;
-
+    final String SQL_CREATE_RANCK_TABLE = "CREATE TABLE " + RankContract.RankEntry.TABLE_NAME + " (" +
+            RankContract.RankEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            RankContract.RankEntry.COLUMN_USER_ID + " INTEGER NOT NULL ," +
+            RankContract.RankEntry.COLUMN_USER_RANK + " INTEGER NOT NULL " +
+            ");";
 
     public NutraWebDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -62,6 +65,7 @@ public class NutraWebDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_PRODUCTS_TABLE);
         db.execSQL(SQL_CREATE_SALE_TABLE);
         db.execSQL(SQL_CREATE_STOCK_TABLE);
+        db.execSQL(SQL_CREATE_RANCK_TABLE);
     }
 
     @Override
@@ -70,6 +74,7 @@ public class NutraWebDbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + ProductContract.ProductEntry.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + SaleContract.SaletEntry.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + StockContract.StockEntry.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + RankContract.RankEntry.TABLE_NAME);
         onCreate(db);
     }
 }

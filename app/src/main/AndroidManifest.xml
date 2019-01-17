@@ -64,6 +64,11 @@
             android:name=".data.ProductProvider"
             android:authorities="com.nutraweb.jomar.capstone02b"
             android:exported="false" />
+        <provider
+            android:name=".data.RankProvider"
+            android:authorities="com.nutraweb.jomar.capstone02C"
+            android:exported="false" />
+
         <service
             android:name=".sync.NutraWebSyncIntentService"
             android:exported="false" />
