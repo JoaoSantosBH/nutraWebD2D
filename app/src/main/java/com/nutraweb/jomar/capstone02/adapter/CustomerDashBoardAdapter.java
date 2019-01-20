@@ -53,7 +53,7 @@ public class CustomerDashBoardAdapter extends RecyclerView.Adapter<CustomerDashB
         MenuViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            thumb.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            //thumb.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             thumb.setAdjustViewBounds(true);
             itemView.setOnClickListener(this);
         }

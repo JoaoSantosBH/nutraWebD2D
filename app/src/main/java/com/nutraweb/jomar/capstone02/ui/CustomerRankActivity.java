@@ -2,9 +2,11 @@ package com.nutraweb.jomar.capstone02.ui;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.nutraweb.jomar.capstone02.R;
@@ -32,6 +34,8 @@ public class CustomerRankActivity extends AppCompatActivity implements CustomerR
     private LinearLayoutManager layoutManager;
     @BindView(R.id.rank_list_recycler_view)
     RecyclerView mRecyclerView;
+    @BindView(R.id.rank_users_toolbar)
+    Toolbar toolbar;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +43,9 @@ public class CustomerRankActivity extends AppCompatActivity implements CustomerR
         setContentView(R.layout.activity_customer_rank);
         ButterKnife.bind(this);
 
-
+        toolbar.setTitle(R.string.title_rank_user);
+        toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent));
+        setSupportActionBar(toolbar);
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
 
         mRecyclerView.setLayoutManager(layoutManager);
@@ -69,6 +75,7 @@ public class CustomerRankActivity extends AppCompatActivity implements CustomerR
                 u.setName(itemCursor.getString(UserContract.UserEntry.COLUMN_INDEX_USER_NAME));
                 u.setPhoneNumber(itemCursor.getInt(UserContract.UserEntry.COLUMN_INDEX_USER_PHONE));
                 u.setEmail(itemCursor.getString(UserContract.UserEntry.COLUMN_INDEX_USER_EMAIL));
+                u.setRank(itemCursor.getInt(UserContract.UserEntry.COLUMN_INDEX_USER_RANK));
                 userList.add(u);
             } while (itemCursor.moveToNext());
 

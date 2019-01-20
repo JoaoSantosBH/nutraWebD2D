@@ -54,8 +54,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Menu
         MenuViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            thumb.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-            thumb.setAdjustViewBounds(true);
+            thumb.setAdjustViewBounds(false);
             itemView.setOnClickListener(this);
         }
 

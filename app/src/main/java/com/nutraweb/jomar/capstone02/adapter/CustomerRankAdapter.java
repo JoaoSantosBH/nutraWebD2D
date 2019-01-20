@@ -26,7 +26,7 @@ public class CustomerRankAdapter extends RecyclerView.Adapter<CustomerRankAdapte
 
     private List<UserEntity> list;
 
-
+    private String SUFIX = " orders";
     private final CustomerRankAdapter.MenuAdapterClickHandler mClickHandler;
 
     public interface MenuAdapterClickHandler {
@@ -45,6 +45,8 @@ public class CustomerRankAdapter extends RecyclerView.Adapter<CustomerRankAdapte
         TextView name;
         @BindView(R.id.rank_list_user_orders)
         TextView rank;
+        @BindView(R.id.rank_sufix_textView)
+        TextView sufix;
 
 
         MenuViewHolder(View itemView) {
@@ -76,8 +78,8 @@ public class CustomerRankAdapter extends RecyclerView.Adapter<CustomerRankAdapte
 
         UserEntity u = list.get(position);
         menuViewHolder.name.setText(u.getName().toString());
-        menuViewHolder.rank.setText(u.getName().toString());
-
+        menuViewHolder.rank.setText( String.valueOf(u.getRank()) );
+        menuViewHolder.sufix.setText(SUFIX);
         Typeface customFont = Typeface.createFromAsset(context.getAssets(), "fonts/Montserrat-Bold.ttf");
 
         menuViewHolder.name.setTypeface(customFont);

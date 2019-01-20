@@ -55,6 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cifer"
+            android:layout_marginLeft="33sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="24sp" />
 
