@@ -86,6 +86,7 @@ public class CustomerAddActivity extends AppCompatActivity {
                         user.getPhoneNumber());
                 values.put(UserContract.UserEntry.COLUMN_USER_EMAIL,
                         user.getEmail());
+                values.put(UserContract.UserEntry.COLUMN_USER_RANK,0);
 
                 getContentResolver().insert(
                         UserContract.UserEntry.CONTENT_URI,

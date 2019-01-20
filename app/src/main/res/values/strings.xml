@@ -157,4 +157,5 @@
     <string name="email_subject">Thanx for Your Order Number: </string>
     <string name="email_total">TOTAL : $ </string>
     <string name="email_format">$</string>
+    <string name="title_activity_rank_user">CustomerRankActivity</string>
 </resources>

@@ -15,6 +15,16 @@ public class UserEntity implements Parcelable {
     private String email;
     private int phoneNumber;
 
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
+    private int rank;
+
     public UserEntity() {
 
     }
@@ -48,6 +58,7 @@ public class UserEntity implements Parcelable {
         name = in.readString();
         email = in.readString();
         phoneNumber = in.readInt();
+        rank = in.readInt();
     }
 
     public static final Creator<UserEntity> CREATOR = new Creator<UserEntity>() {
@@ -73,6 +84,7 @@ public class UserEntity implements Parcelable {
         parcel.writeString(name);
         parcel.writeString(email);
         parcel.writeInt(phoneNumber);
+        parcel.writeInt(rank);
     }
     @Override
     public String toString() {

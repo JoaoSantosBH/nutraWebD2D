@@ -1,8 +1,6 @@
 package com.nutraweb.jomar.capstone02.ui;
 
-import android.content.ContentResolver;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -14,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -52,7 +49,6 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
 
     @BindView(R.id.list_stcok_sales_recycler_view)
     RecyclerView mRecyclerView;
-    //aqui
     @BindView(R.id.sales_sell_toolbar)
     Toolbar toolbar;
     @BindView(R.id.spinner_users)
@@ -103,7 +99,6 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
     }
 
     private void submmitOrder(UserEntity u) {
-//        01 - Criar venda com usuário e itens da venda
 
         String orderNumber = buyOrderNumber();
         Calendar c = Calendar.getInstance();
@@ -117,10 +112,9 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         sale.setNumberSale(Integer.valueOf(orderNumber));
         sale.setUserId(u.get_id());
         int total = 0;
-        //se o valor da qty for 0
         for (ProductEntity p : saleList) {
             total += p.getValor();
-        } // senao decremeta
+        }
         sale.setTotal(total);
         sale.getDate();
         for (StockEntity st : stockEntities) {
@@ -135,34 +129,51 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
 
     }
 
-    //ToDo        Incrementar contador de compras do usuário
+    //ToDo        rank
     private void userRank(int userId) {
-        int rank =0;
-        boolean userExist = verifyUserRegister(userId);
+        UserEntity rankUser = getUser(userId);
+        int rank = rankUser.getRank();
+        rank++;
         ContentValues valuesProd = new ContentValues();
-        valuesProd.put(RankContract.RankEntry.COLUMN_USER_ID,
-                userId);
 
-        if (userExist){
-            rank = getUserRank(userId);
-            rank++;
-
-        } else {
-            rank++;
-        }
-
-        valuesProd.put(RankContract.RankEntry.COLUMN_RANK_ID,
+        valuesProd.put(UserContract.UserEntry.COLUMN_USER_RANK,
                 rank);
-
-        getContentResolver().insert(
-                RankContract.RankEntry.CONTENT_URI,
-                valuesProd
+        getContentResolver().update(
+                UserContract.UserEntry.CONTENT_URI,
+                valuesProd,
+                UserContract.UserEntry.COLUMN_USER_ID + " = ?",
+                new String[]{String.valueOf(userId)}
         );
     }
 
+    private UserEntity getUser(int userId) {
+                 UserEntity u = null;
+            Cursor itemCursor = getContentResolver().query(
+                    UserContract.UserEntry.CONTENT_URI,
+                    null,
+                    UserContract.UserEntry.COLUMN_USER_ID + " = ?",
+                    new String[]{String.valueOf(userId)},
+                    null);
+
+            if (itemCursor != null && itemCursor.moveToFirst()) {
+                do {
+                    u = new UserEntity();
+                    u.set_id(itemCursor.getInt(UserContract.UserEntry.COLUMN_INDEX_USER_ID));
+                    u.setName(itemCursor.getString(UserContract.UserEntry.COLUMN_INDEX_USER_NAME));
+                    u.setPhoneNumber(itemCursor.getInt(UserContract.UserEntry.COLUMN_INDEX_USER_PHONE));
+                    u.setEmail(itemCursor.getString(UserContract.UserEntry.COLUMN_INDEX_USER_EMAIL));
+                    u.setRank(itemCursor.getInt(UserContract.UserEntry.COLUMN_INDEX_USER_RANK));
+                } while (itemCursor.moveToNext());
+
+            }
+            itemCursor.close();
+            return u;
+
+    }
+
+
     private boolean verifyUserRegister(int userId) {
         boolean exist = false;
-        String value = "";
         Cursor itemCursor = getContentResolver().query(
                 RankContract.RankEntry.CONTENT_URI,
                 new String[]{String.valueOf(RankContract.RankEntry.COLUMN_USER_ID)},
@@ -172,7 +183,6 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
 
         if (itemCursor != null) {
             if (itemCursor.moveToFirst()) {
-                value = itemCursor.getString(itemCursor.getColumnIndex(RankContract.RankEntry.COLUMN_USER_RANK));
                 exist = true;
             }
 
@@ -191,7 +201,7 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         String yS = dataPre[0];
         String mS = dataPre[1];
         String dS = dataPre[2];
-        String result = yS + mS + dS;
+        String result = yS + mS + dS +  today.get(Calendar.MINUTE);
         return result;
     }
 
@@ -215,13 +225,10 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
                 listItens.add(u);
             } while (itemCursor.moveToNext());
 
-            itemCursor.close();
-            return listItens;
-        } else {
-            return listItens;
         }
+        itemCursor.close();
+        return listItens;
     }
-
     private ProductEntity getProductWihtItemProductId(String id) {
         ProductEntity p = null;
         Cursor itemCursor = getContentResolver().query(
@@ -241,12 +248,9 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
                 p.setValor(itemCursor.getInt(ProductContract.ProductEntry.COLUMN_INDEX_PRODUCT_PRICE));
 
             } while (itemCursor.moveToNext());
-
-            itemCursor.close();
-            return p;
-        } else {
-            return p;
         }
+        itemCursor.close();
+        return p;
     }
 
     private ProductEntity getProduct(int id) {
@@ -268,12 +272,10 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
                 p.setValor(itemCursor.getInt(ProductContract.ProductEntry.COLUMN_INDEX_PRODUCT_PRICE));
 
             } while (itemCursor.moveToNext());
-
             itemCursor.close();
             return p;
-        } else {
-            return null;
         }
+        return null; //ToDo
     }
 
     private List<StockEntity> getItensInStock() {
@@ -296,12 +298,9 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
                 s.setQty(itemCursor.getInt(StockContract.StockEntry.COLUMN_INDEX_STOCK_QTY));
                 listItens.add(s);
             } while (itemCursor.moveToNext());
-
-            itemCursor.close();
-            return listItens;
-        } else {
-            return listItens;
         }
+        itemCursor.close();
+        return listItens;
     }
 
     private void decrementStockItem(int id, int qty) {
@@ -340,13 +339,9 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
             if (itemCursor.moveToFirst()) {
                 value = itemCursor.getString(itemCursor.getColumnIndex(StockContract.StockEntry.COLUMN_STOCK_QTY));
             }
-
-            itemCursor.close();
-            return value;
-
-        } else {
-            return value;
         }
+        itemCursor.close();
+        return value;
     }
 
     private String getProductValue(StockEntity item) {
@@ -363,13 +358,11 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
                 value = itemCursor.getString(itemCursor.getColumnIndex(ProductContract.ProductEntry.COLUMN__PRODUCT_PRICE));
             }
 
-            itemCursor.close();
-            return value;
-
-        } else {
-            return value;
         }
+        itemCursor.close();
+        return value;
     }
+
 
     @Override
     public void onClick(StockEntity item) {
@@ -404,9 +397,28 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         return totalSale;
     }
 
-//    Enviar email para usuario informando da venda bem sucedida
+    private String getUserEmail(int userId) {
+        String value = "";
+        Cursor itemCursor = getContentResolver().query(
+                UserContract.UserEntry.CONTENT_URI,
+                new String[]{String.valueOf(UserContract.UserEntry.COLUMN_USER_EMAIL)},
+                UserContract.UserEntry.COLUMN_USER_ID + " = ?",
+                new String[]{String.valueOf(userId)},
+                null);
 
+        if (itemCursor != null) {
+            if (itemCursor.moveToFirst()) {
+                value = itemCursor.getString(itemCursor.getColumnIndex(UserContract.UserEntry.COLUMN_USER_EMAIL));
+            }
+
+            itemCursor.close();
+
+
+        }
+        return value;
+    }
     public void sendEmail(SaleEntity sale) {
+        String email = getUserEmail(sale.getUserId());
         String subject = getString(R.string.email_subject);
         subject += " " + sale.getNumberSale();
         String emailMessage = "";
@@ -422,6 +434,7 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setType("message/rfc822");
         intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email} );
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
         intent.putExtra(Intent.EXTRA_TEXT, emailMessage);
 
@@ -430,4 +443,6 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
 
         }
     }
+
+
 }

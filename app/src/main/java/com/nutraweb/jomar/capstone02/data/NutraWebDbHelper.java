@@ -11,14 +11,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class NutraWebDbHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "nutra.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
 
     final String SQL_CREATE_USERS_TABLE = "CREATE TABLE " + UserContract.UserEntry.TABLE_NAME + " (" +
             UserContract.UserEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             UserContract.UserEntry.COLUMN_USER_NAME + " TEXT NOT NULL, " +
             UserContract.UserEntry.COLUMN_USER_EMAIL + " TEXT NOT NULL, " +
-            UserContract.UserEntry.COLUMN_USER_PHONE + " INTEGER NOT NULL " +
+            UserContract.UserEntry.COLUMN_USER_PHONE + " INTEGER NOT NULL, " +
+            UserContract.UserEntry.COLUMN_USER_RANK + " INTEGER NOT NULL " +
             ");";
 
     final String SQL_CREATE_PRODUCTS_TABLE = "CREATE TABLE " + ProductContract.ProductEntry.TABLE_NAME + " (" +

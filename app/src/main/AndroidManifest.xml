@@ -37,6 +37,10 @@
             android:label="@string/title_activity_add_stock"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".ui.CustomerRankActivity"
+            android:label="@string/title_activity_rank_user"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ui.CustomerAddActivity"
             android:label="@string/title_activity_customer_add"
             android:theme="@style/AppTheme.NoActionBar" />

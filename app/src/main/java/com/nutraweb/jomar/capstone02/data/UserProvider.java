@@ -152,7 +152,7 @@ public class UserProvider extends ContentProvider {
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
         int numRowsUpdated;
         switch (sUriMatcher.match(uri)){
-            case CODE_USER_ID:
+            case USER_ITEM:
                 numRowsUpdated = mOpenDbHelper.getWritableDatabase().update(
                         UserContract.UserEntry.TABLE_NAME,
                         values,

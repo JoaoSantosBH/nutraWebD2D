@@ -34,18 +34,21 @@ public class UserContract {
         public static final String COLUMN_USER_NAME = "name";
         public static final String COLUMN_USER_EMAIL = "email";
         public static final String COLUMN_USER_PHONE = "phone";
+        public static final String COLUMN_USER_RANK = "rank";
 
 
         public static final String[] MAIN_USER_PROJECTION = {
                 UserEntry.COLUMN_USER_ID,
                 UserEntry.COLUMN_USER_NAME,
                 UserEntry.COLUMN_USER_EMAIL,
-                UserEntry.COLUMN_USER_PHONE
+                UserEntry.COLUMN_USER_PHONE,
+                UserEntry.COLUMN_USER_RANK
         };
         public static final int COLUMN_INDEX_USER_ID = 0;
         public static final int COLUMN_INDEX_USER_NAME = 1;
         public static final int COLUMN_INDEX_USER_EMAIL = 2;
         public static final int COLUMN_INDEX_USER_PHONE = 3;
+        public static final int COLUMN_INDEX_USER_RANK = 4;
 
 
 

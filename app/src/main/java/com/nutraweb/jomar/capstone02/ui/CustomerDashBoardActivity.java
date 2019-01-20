@@ -73,12 +73,21 @@ public class CustomerDashBoardActivity extends AppCompatActivity implements Cust
                     // Swap without transitioni
                     startActivity(i);
                 }
-
-
                 break;
             case LIST_RANK:
-                Toast.makeText(this,LIST_RANK, Toast.LENGTH_SHORT).show();
+                Intent j = new Intent(this, CustomerRankActivity.class);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    // Apply activity transition
+                    startActivity(j,
+                            ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+
+                } else {
+                    // Swap without transitioni
+                    startActivity(j);
+                }
+
                 break;
+
 
         }
     }
