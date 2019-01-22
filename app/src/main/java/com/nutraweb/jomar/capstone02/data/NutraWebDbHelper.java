@@ -31,13 +31,13 @@ public class NutraWebDbHelper extends SQLiteOpenHelper {
             ProductContract.ProductEntry.COLUMN__PRODUCT_PRICE + " INTEGER NOT NULL " +
             ");";
 
-    final String SQL_CREATE_SALE_TABLE = "CREATE TABLE " + SaleContract.SaletEntry.TABLE_NAME + " (" +
-            SaleContract.SaletEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            SaleContract.SaletEntry.COLUMN_SALE_NUMBER + " INTEGER NOT NULL, " +
-            SaleContract.SaletEntry.COLUMN_SALE_USER_ID + " INTEGER NOT NULL, " +
-            SaleContract.SaletEntry.COLUMN_SALE_DATE + " TEXT NOT NULL, " +
-            SaleContract.SaletEntry.COLUMN_SALE_QTY + " INTEGER NOT NULL, " +
-            SaleContract.SaletEntry.COLUMN_SALE_TOTAL + " INTEGER NOT NULL " +
+    final String SQL_CREATE_SALE_TABLE = "CREATE TABLE " + SaleContract.SaleEntry.TABLE_NAME + " (" +
+            SaleContract.SaleEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            SaleContract.SaleEntry.COLUMN_SALE_NUMBER + " INTEGER NOT NULL, " +
+            SaleContract.SaleEntry.COLUMN_SALE_USER_ID + " INTEGER NOT NULL, " +
+            SaleContract.SaleEntry.COLUMN_SALE_DATE + " TEXT NOT NULL, " +
+            SaleContract.SaleEntry.COLUMN_SALE_QTY + " INTEGER NOT NULL, " +
+            SaleContract.SaleEntry.COLUMN_SALE_TOTAL + " INTEGER NOT NULL " +
             ");";
 
     final String SQL_CREATE_STOCK_TABLE = "CREATE TABLE " + StockContract.StockEntry.TABLE_NAME + " (" +
@@ -73,7 +73,7 @@ public class NutraWebDbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + UserContract.UserEntry.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + ProductContract.ProductEntry.TABLE_NAME);
-        db.execSQL("DROP TABLE IF EXISTS " + SaleContract.SaletEntry.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + SaleContract.SaleEntry.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + StockContract.StockEntry.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + RankContract.RankEntry.TABLE_NAME);
         onCreate(db);

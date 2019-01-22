@@ -25,7 +25,6 @@ import butterknife.ButterKnife;
 public class SaleSellAdapter  extends RecyclerView.Adapter<SaleSellAdapter.MenuViewHolder>{
 
     private List<StockEntity> list;
-
     private final SaleSellAdapter.MenuAdapterClickHandler mClickHandler;
 
     public interface MenuAdapterClickHandler {

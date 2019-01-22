@@ -22,6 +22,7 @@ import com.nutraweb.jomar.capstone02.R;
 import com.nutraweb.jomar.capstone02.adapter.SaleSellAdapter;
 import com.nutraweb.jomar.capstone02.data.ProductContract;
 import com.nutraweb.jomar.capstone02.data.RankContract;
+import com.nutraweb.jomar.capstone02.data.SaleContract;
 import com.nutraweb.jomar.capstone02.data.StockContract;
 import com.nutraweb.jomar.capstone02.data.UserContract;
 import com.nutraweb.jomar.capstone02.model.ProductEntity;
@@ -55,6 +56,8 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
     Spinner spinner;
     @BindView(R.id.totalSale)
     TextView total;
+    @BindView(R.id.instruct_sale_textView)
+    TextView instruct;
 
     List<UserEntity> usersList;
 
@@ -88,16 +91,23 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserEntity u = new UserEntity();
-                u = (UserEntity) ((Spinner) findViewById(R.id.spinner_users)).getSelectedItem();
-                submmitOrder(u);
-
-                Snackbar.make(view, "Replace with your own mumu" + u.get_id() + u.getName() + u.getPhoneNumber(), Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if (totalSale > 0){
+                    UserEntity u = new UserEntity();
+                    u = (UserEntity) ((Spinner) findViewById(R.id.spinner_users)).getSelectedItem();
+                    submmitOrder(u);
+                    clearSale();
+                } else {
+                    Snackbar.make(view, R.string.sale_validate, Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
             }
         });
     }
 
+    private void clearSale(){
+        totalSale = 0;
+        total.setText(String.valueOf(totalSale));
+    }
     private void submmitOrder(UserEntity u) {
 
         String orderNumber = buyOrderNumber();
@@ -124,6 +134,8 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
             }
         }
         sendEmail(sale);
+
+        createSale(sale);
         userRank(sale.getUserId());
 
 
@@ -416,6 +428,18 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
 
         }
         return value;
+    }
+    public void createSale(SaleEntity sale){
+
+        ContentValues valuesProd = new ContentValues();
+        valuesProd.put(SaleContract.SaleEntry.COLUMN_SALE_QTY, sale.getQty());
+        valuesProd.put(SaleContract.SaleEntry.COLUMN_SALE_TOTAL, sale.getTotal());
+        valuesProd.put(SaleContract.SaleEntry.COLUMN_SALE_NUMBER, sale.getNumberSale());
+        valuesProd.put(SaleContract.SaleEntry.COLUMN_SALE_USER_ID,sale.getUserId());
+        valuesProd.put(SaleContract.SaleEntry.COLUMN_SALE_DATE,sale.getDate());
+        getContentResolver().insert(
+                SaleContract.SaleEntry.CONTENT_URI,
+                valuesProd);
     }
     public void sendEmail(SaleEntity sale) {
         String email = getUserEmail(sale.getUserId());

@@ -10,12 +10,12 @@ import java.util.List;
  */
 
 public class SaleEntity implements Parcelable {
-    private List<ProductEntity> itens;
-    private int qty;
-    private int total;
-    private int numberSale;
-    private int userId;
-    private String date;
+        private List<ProductEntity> itens;
+        private int qty;
+        private int total;
+        private int numberSale;
+        private int userId;
+        private String date;
 
     public SaleEntity() {
 

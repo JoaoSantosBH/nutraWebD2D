@@ -76,12 +76,18 @@ public class SalesDashBoardActivity extends AppCompatActivity implements SalesDa
                     // Swap without transitioni
                     startActivity(salesSell);
                 }
-
-
                 break;
             case HISTORY:
-                Toast.makeText(this,HISTORY, Toast.LENGTH_SHORT).show();
-                break;
+                Intent salesHist = new Intent(this, SalesHistoryActivity.class);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    // Apply activity transition
+                    startActivity(salesHist,
+                            ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+
+                } else {
+                    // Swap without transitioni
+                    startActivity(salesHist);
+                }                break;
 
         }
 

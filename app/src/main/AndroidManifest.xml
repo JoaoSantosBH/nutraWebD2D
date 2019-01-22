@@ -51,11 +51,12 @@
         <activity
             android:name=".ui.ProductDetailActivity"
             android:label="@string/title_activity_product_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-<activity
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ui.StockListItensActivity"
             android:label="@string/title_stoc_list_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <provider
             android:name=".data.StockProvider"
             android:authorities="com.nutraweb.jomar.capstone02"
@@ -72,7 +73,10 @@
             android:name=".data.RankProvider"
             android:authorities="com.nutraweb.jomar.capstone02C"
             android:exported="false" />
-
+        <provider
+            android:name=".data.SaleProvider"
+            android:authorities="com.nutraweb.jomar.capstone02s"
+            android:exported="false" />
         <service
             android:name=".sync.NutraWebSyncIntentService"
             android:exported="false" />
@@ -82,11 +86,17 @@
         <service
             android:name=".sync.NutraWebFirebaseJobService"
             android:exported="false">
+
             <!-- COMPLETED (9) Declare an intent filter with the action ACTION_EXECUTE -->
             <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name=".ui.SalesHistoryActivity"
+            android:label="@string/title_activity_sales_history"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

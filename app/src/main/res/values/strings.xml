@@ -123,14 +123,14 @@
     <string name="title_activity_stock">StockActivity</string>
     <string name="title_activity_add_stock">AddStockActivity</string>
     <string name="add_stock_title">Add Items on Stock</string>
-    <string name="title_new_order">New order</string>
+    <string name="title_new_order">New Sale</string>
     <string name="title_add_stock">Add Item on Stock</string>
     <string name="title_customer">Customers</string>
     <string name="title_activity_customer_add">CustomerAddActivity</string>
     <string name="title_activity_sales_add">SalesDashBoardActivity</string>
     <string name="add_customer_title">ADD CUSTOMER</string>
     <string name="title_add_customer">Add Customer</string>
-    <string name="sales_sell_toolbar">New Order</string>
+    <string name="sales_sell_toolbar">New Sale</string>
     <string name="title_activity_product_detail">ProductDetailActivity</string>
     <string name="title_Add_Item_Stock">Add Item to Stock</string>
     <string name="select_qty">Select amount itens to add</string>
@@ -160,4 +160,8 @@
     <string name="title_activity_rank_user">CustomerRankActivity</string>
     <string name="rank_text">orders</string>
     <string name="title_rank_user">Rank Users</string>
+    <string name="sale_instruction">Select an user then click on products to add itens on sale!</string>
+    <string name="sale_validate">There is no itens to sale</string>
+    <string name="title_activity_sales_history">SalesHistoryActivity</string>
+    <string name="title_sales_hist">History</string>
 </resources>
