@@ -164,4 +164,6 @@
     <string name="sale_validate">There is no itens to sale</string>
     <string name="title_activity_sales_history">SalesHistoryActivity</string>
     <string name="title_sales_hist">History</string>
+    <string name="sales_hist_money_prefix">$</string>
+    <string name="sales_hist_number_prefix">Order Number :</string>
 </resources>

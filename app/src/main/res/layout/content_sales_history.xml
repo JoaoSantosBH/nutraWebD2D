@@ -1,13 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.nutraweb.jomar.capstone02.ui.SalesHistoryActivity"
-    tools:showIn="@layout/activity_sales_history">
+    android:layout_marginTop="8dp"
+    android:orientation="horizontal"
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
+        <TextView
+            android:id="@+id/hist_sales_order_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:padding="8dp"
+            android:paddingRight="8dp"
+            android:layout_toEndOf="@+id/sales_hist_number_prefix"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            tools:text="Number" />
 
+        <TextView
+            android:id="@+id/hist_sales_total_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="9dp"
+            android:padding="8dp"
+            android:paddingRight="4dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="Total" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/hist_sales_date_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:padding="8dp"
+            android:paddingRight="8dp"
+            android:layout_toEndOf="@+id/hist_sales_order_number"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="Date" />
+
+        <TextView
+            android:id="@+id/sales_hist_number_prefix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="1dp"
+            android:padding="8dp"
+            android:paddingRight="8dp"
+            android:text="@string/sales_hist_number_prefix"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            tools:text="Order Number :" />
+
+        <TextView
+            android:id="@+id/sales_hist_money_prefix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/hist_sales_total_textview"
+            android:text="@string/sales_hist_money_prefix"
+            android:padding="8dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    </RelativeLayout>

@@ -1,17 +1,13 @@
 package com.nutraweb.jomar.capstone02.adapter;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nutraweb.jomar.capstone02.R;
-import com.nutraweb.jomar.capstone02.model.ProductEntity;
 import com.nutraweb.jomar.capstone02.model.SaleEntity;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -26,24 +22,27 @@ public class SaleHistoryAdapter extends RecyclerView.Adapter<SaleHistoryAdapter.
 
     private final SaleHistoryAdapter.SalesAdapterClickHandler mClickHandler;
     private List<SaleEntity> list;
-
+    private int total, number;
+    private String date;
     public interface SalesAdapterClickHandler{
         void onClick(SaleEntity sale);
     }
 
-    public SalesAdapter(SaleHistoryAdapter.SalesAdapterClickHandler mClickHandler){
+    public SaleHistoryAdapter(SaleHistoryAdapter.SalesAdapterClickHandler mClickHandler){
         this.mClickHandler = mClickHandler;
     }
 
 
     public class SalesHistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        @BindView(R.id.)
-        ImageView thumb;
-        @BindView(R.id.)
-        TextView title;
+        @BindView(R.id.hist_sales_order_number)
+        TextView orderNumber;
+        @BindView(R.id.hist_sales_date_textview)
+        TextView orderDate;
+        @BindView(R.id.hist_sales_total_textview)
+        TextView orderTotal;
 
-        public SaleHistViewHolder(View itemView) {
+        public SalesHistViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
             itemView.setOnClickListener(this);
@@ -59,7 +58,7 @@ public class SaleHistoryAdapter extends RecyclerView.Adapter<SaleHistoryAdapter.
     @Override
     public SaleHistoryAdapter.SalesHistViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout., parent,false);
+        View view = inflater.inflate(R.layout.content_sales_history, parent,false);
 
         return new SaleHistoryAdapter.SalesHistViewHolder(view);
     }
@@ -67,15 +66,14 @@ public class SaleHistoryAdapter extends RecyclerView.Adapter<SaleHistoryAdapter.
     @Override
     public void onBindViewHolder(SaleHistoryAdapter.SalesHistViewHolder holder, int position) {
 
-        Context context = holder.itemView.getContext();
-        String titulo = list.get(position).getTitulo();
-        String imagePath = list.get(position).getUrl();
-        holder.title.setText(titulo);
+        number = list.get(position).getNumberSale();
+        holder.orderNumber.setText(String.valueOf(number));
+        date = list.get(position).getDate();
+        holder.orderDate.setText(String.valueOf(date));
+        total = list.get(position).getTotal();
+        holder.orderTotal.setText(String.valueOf(total));
 
-        Picasso.with(context)
-                .load(imagePath)
-                .placeholder(R.mipmap.ic_launcher)
-                .into(holder.thumb);
+
     }
 
     @Override

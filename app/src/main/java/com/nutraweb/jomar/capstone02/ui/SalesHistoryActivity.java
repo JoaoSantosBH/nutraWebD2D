@@ -21,15 +21,14 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SalesHistoryActivity extends AppCompatActivity {
+public class SalesHistoryActivity extends AppCompatActivity implements SaleHistoryAdapter.SalesAdapterClickHandler {
 
     private List<SaleEntity> sales;
-    List<UserEntity> userEntities ;
     private SaleHistoryAdapter adapter;
     private LinearLayoutManager layoutManager;
-    @BindView(R.id.)
+    @BindView(R.id.sales_hist_recycler_view)
     RecyclerView mRecyclerView;
-    @BindView(R.id.)
+    @BindView(R.id.sales_hist_toolbar)
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +43,10 @@ public class SalesHistoryActivity extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
-        adapter = new CustomerRankAdapter(this);
+        adapter = new SaleHistoryAdapter(this);
         mRecyclerView.setAdapter(adapter);
-
         sales = getSales();
         adapter.setList(sales);
-
-
     }
 
 
@@ -62,7 +58,7 @@ public class SalesHistoryActivity extends AppCompatActivity {
                 null,
                 null,
                 null,
-                null);
+                SaleContract.SaleEntry.COLUMN_SALE_DATE+ " DESC") ;
 
         if (itemCursor != null && itemCursor.moveToFirst()) {
             do {
@@ -83,4 +79,8 @@ public class SalesHistoryActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(SaleEntity sale) {
+
+    }
 }
