@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.android.gms.ads.MobileAds;
 
 import com.github.ybq.android.spinkit.SpinKitView;
 import com.nutraweb.jomar.capstone02.R;
@@ -21,8 +22,13 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
+
 
 public class DashBoardActivity extends AppCompatActivity implements DashboardAdapter.MenuAdapterClickHandler {
+    private AdView mAdView;
 
     private static final String CUSTOMER = "CUSTOMER";
     private static final String SALES = "SALES";
@@ -56,6 +62,13 @@ public class DashBoardActivity extends AppCompatActivity implements DashboardAda
         mAdapter.setList(lista);
         mRecyclerView.setAdapter(mAdapter);
         NutraWebSyncUtils.initialize(this);
+        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
+
+// TODO: Add adView to your view hierarchy.
+        MobileAds.initialize(this, "ca-app-pub-5253945965989036~1399832495");
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
     }
 

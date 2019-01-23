@@ -32,7 +32,6 @@ public class SaleHistoryAdapter extends RecyclerView.Adapter<SaleHistoryAdapter.
         this.mClickHandler = mClickHandler;
     }
 
-
     public class SalesHistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         @BindView(R.id.hist_sales_order_number)
@@ -72,8 +71,6 @@ public class SaleHistoryAdapter extends RecyclerView.Adapter<SaleHistoryAdapter.
         holder.orderDate.setText(String.valueOf(date));
         total = list.get(position).getTotal();
         holder.orderTotal.setText(String.valueOf(total));
-
-
     }
 
     @Override
