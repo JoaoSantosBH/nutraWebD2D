@@ -166,4 +166,9 @@
     <string name="title_sales_hist">History</string>
     <string name="sales_hist_money_prefix">$</string>
     <string name="sales_hist_number_prefix">Order Number :</string>
+    <string name="customer_add_name">Enter a user name</string>
+    <string name="customer_add_phone">Enter a Phone number</string>
+    <string name="customer_add_email">Enter an email</string>
+    <string name="sale_sell_finish_order">Finish the sell</string>
+    <string name="product_detail_add_to_stock">Add item to stock</string>
 </resources>
