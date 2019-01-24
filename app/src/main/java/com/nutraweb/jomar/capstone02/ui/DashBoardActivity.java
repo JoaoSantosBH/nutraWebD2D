@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import com.google.android.gms.ads.MobileAds;
 
 import com.github.ybq.android.spinkit.SpinKitView;
@@ -24,7 +24,6 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-
 
 
 public class DashBoardActivity extends AppCompatActivity implements DashboardAdapter.MenuAdapterClickHandler {
@@ -55,7 +54,7 @@ public class DashBoardActivity extends AppCompatActivity implements DashboardAda
         lista.add(CUSTOMER);
         lista.add(SALES);
         lista.add(STOCK);
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
         mAdapter = new DashboardAdapter(this);
@@ -70,8 +69,8 @@ public class DashBoardActivity extends AppCompatActivity implements DashboardAda
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-    }
 
+    }
 
     @Override
     public void onClick(String string) {

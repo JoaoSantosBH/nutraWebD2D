@@ -171,4 +171,7 @@
     <string name="customer_add_email">Enter an email</string>
     <string name="sale_sell_finish_order">Finish the sell</string>
     <string name="product_detail_add_to_stock">Add item to stock</string>
+    <string name="appwidget_text">sales</string>
+    <string name="add_widget">Add widget</string>
+    <string name="widget_qty">0</string>
 </resources>

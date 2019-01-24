@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorAccent"
+    android:padding="@dimen/widget_margin">
+
+    <ImageView
+        android:id="@+id/widget_sale_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:src="@mipmap/cap_add_sale_icon" />
+
+    <TextView
+        android:id="@+id/appwidget_text_qty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/appwidget_text"
+        android:text="@string/appwidget_text"
+        android:textColor="#ffffff"
+        android:textSize="36sp"
+        android:textStyle="bold|italic"
+        tools:text="@string/widget_qty" />
+
+    <TextView
+        android:id="@+id/appwidget_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appwidget_text_qty"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="@+id/appwidget_text_qty"
+        android:contentDescription="@string/appwidget_text"
+        android:text="@string/appwidget_text"
+        android:textColor="#ffffff"
+        android:textSize="12sp"
+        android:textStyle="bold|italic"
+        tools:text="@string/widget_qty" />
+
+</RelativeLayout>

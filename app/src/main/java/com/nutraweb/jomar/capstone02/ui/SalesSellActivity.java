@@ -83,7 +83,6 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         mRecyclerView.setHasFixedSize(true);
         saleSellAdapter = new SaleSellAdapter(this);
         mRecyclerView.setAdapter(saleSellAdapter);
-
         stockEntities = getItensInStock();
         saleSellAdapter.setList(stockEntities);
 
@@ -106,6 +105,7 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
 
     private void clearSale(){
         totalSale = 0;
+        saleList.clear();//LIMPAR COMPRA ITENS
         total.setText(String.valueOf(totalSale));
     }
     private void submmitOrder(UserEntity u) {
