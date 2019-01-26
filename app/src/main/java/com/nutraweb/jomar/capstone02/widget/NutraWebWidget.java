@@ -21,8 +21,6 @@ public class NutraWebWidget extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
-
-        // Construct the RemoteViews object
         int total = 0;
         Cursor itemCursor = context.getContentResolver().query(
 
@@ -31,15 +29,11 @@ public class NutraWebWidget extends AppWidgetProvider {
                 null,
                 null,
                 null);
-
-
         if (itemCursor != null) {
             if (itemCursor.moveToFirst()) {
                 total = itemCursor.getInt(0);
             }
-
             itemCursor.close();
-
         }
         CharSequence tot = String.valueOf(total);
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.nutra_web_widget);
@@ -48,8 +42,6 @@ public class NutraWebWidget extends AppWidgetProvider {
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
-
-
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -60,12 +52,8 @@ public class NutraWebWidget extends AppWidgetProvider {
             Intent intent = new Intent(context, SalesHistoryActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
 
-            // Get the layout for the App Widget and attach an on-click listener
-            // to the button
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.nutra_web_widget);
             views.setOnClickPendingIntent(R.id.appwidget_text_qty, pendingIntent);
-
-            // Tell the AppWidgetManager to perform an update on the current app widget
 
             appWidgetManager.updateAppWidget(appWidgetId, views);
 

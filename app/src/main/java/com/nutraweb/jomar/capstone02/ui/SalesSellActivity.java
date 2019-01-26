@@ -105,7 +105,7 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
 
     private void clearSale(){
         totalSale = 0;
-        saleList.clear();//LIMPAR COMPRA ITENS
+        saleList.clear();
         total.setText(String.valueOf(totalSale));
     }
     private void submmitOrder(UserEntity u) {
@@ -137,11 +137,9 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
 
         createSale(sale);
         userRank(sale.getUserId());
-
-
     }
 
-    //ToDo        rank
+
     private void userRank(int userId) {
         UserEntity rankUser = getUser(userId);
         int rank = rankUser.getRank();
@@ -180,7 +178,6 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
             }
             itemCursor.close();
             return u;
-
     }
 
 
@@ -197,7 +194,6 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
             if (itemCursor.moveToFirst()) {
                 exist = true;
             }
-
         }
         return exist;
     }
@@ -236,7 +232,6 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
                 u.setEmail(itemCursor.getString(UserContract.UserEntry.COLUMN_INDEX_USER_EMAIL));
                 listItens.add(u);
             } while (itemCursor.moveToNext());
-
         }
         itemCursor.close();
         return listItens;
