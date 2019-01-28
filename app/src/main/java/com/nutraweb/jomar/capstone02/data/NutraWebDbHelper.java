@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by jomar on 28/04/18.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class NutraWebDbHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "nutra.db";

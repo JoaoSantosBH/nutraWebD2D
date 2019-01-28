@@ -15,6 +15,7 @@ import android.support.annotation.Nullable;
  * Created by joaosantos on 11/01/19.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class UserProvider extends ContentProvider {
 
     public static final int USER_ITEM = 10;

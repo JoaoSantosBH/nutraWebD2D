@@ -35,7 +35,7 @@ import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG                 = LoginActivity.class.getName().toString();
+    private static final String TAG                 = LoginActivity.class.getName();
 
     private static final int INVALID_NUMBER_MESSAGE = R.string.invalid_phone_number;
     private static final int ERROR_MSG              = R.string.error_message;
@@ -338,7 +338,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         String country = "+" + countryCodeProvided.getText().toString();
         String phone = phoneNumberProvided.getText().toString();
-        if(country != null && !country.isEmpty() && phone != null && !phone.isEmpty() ){
+        if(!country.isEmpty() && phone != null && !phone.isEmpty()){
             resultPhoneNumber =  country + phone;
             if (resultPhoneNumber != null && !resultPhoneNumber.isEmpty() ){//tirar este if de validacao ja foi validado
                 Snackbar snackbar = Snackbar

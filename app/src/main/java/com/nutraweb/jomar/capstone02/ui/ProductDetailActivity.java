@@ -37,6 +37,10 @@ public class ProductDetailActivity extends AppCompatActivity {
     TextView total;
     @BindView(R.id.quantity_text_view)
     TextView qty;
+    @BindView(R.id.toolbar_product_detail)
+    Toolbar toolbar;
+    @BindView(R.id.fab_product_detail)
+    FloatingActionButton fab;
 
     private StockEntity stockItem;
     private int mQuantity = 0;
@@ -50,15 +54,14 @@ public class ProductDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product_detail);
         ButterKnife.bind(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_product_detail);
         setSupportActionBar(toolbar);
         this.setTitle(R.string.title_Add_Item_Stock);
 
         if (getIntent().hasExtra("myObj")) {
-            product = (ProductEntity) getIntent().getParcelableExtra("myObj");
+            product = getIntent().getParcelableExtra("myObj");
             value = product.getValor();
             title.setText(product.getTitulo());
-            price.setText("R$ " + String.valueOf(product.getValor()) + " ,00");
+            price.setText( String.valueOf(product.getValor()));
             total.setText(String.valueOf(mTotalPrice));
             qty.setText(String.valueOf(mQuantity));
             Context context = this;
@@ -67,7 +70,6 @@ public class ProductDetailActivity extends AppCompatActivity {
                     .into(thumb);
         }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_product_detail);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

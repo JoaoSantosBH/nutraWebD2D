@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_height="wrap_content"
@@ -16,7 +15,7 @@
         android:id="@+id/rank_list_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
         android:textSize="22sp"
         android:textStyle="normal|bold"
         tools:text="User" />
@@ -25,7 +24,7 @@
         android:id="@+id/rank_list_user_orders"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="200dp"
         android:textSize="22sp"
         android:textStyle="normal|bold"
 
@@ -35,8 +34,7 @@
         android:id="@+id/rank_sufix_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="250dp"
-        android:text="TextView"
+        android:layout_marginStart="250dp"
         android:textSize="22sp"
         android:textStyle="normal|bold"
 

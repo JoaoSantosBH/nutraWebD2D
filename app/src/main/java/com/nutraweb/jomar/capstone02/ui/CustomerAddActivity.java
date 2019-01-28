@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 
 public class CustomerAddActivity extends AppCompatActivity {
     private UserEntity user = null;
-    private boolean userExist ;
+    private boolean userExist;
 
     @BindView(R.id.customer_add_toolbar)
     Toolbar toolbar;
@@ -31,6 +31,8 @@ public class CustomerAddActivity extends AppCompatActivity {
     TextView phone;
     @BindView(R.id.addCustomerEditTextEmail)
     TextView email;
+    @BindView(R.id.add_customer_fab)
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,39 +41,41 @@ public class CustomerAddActivity extends AppCompatActivity {
         user = new UserEntity();
         ButterKnife.bind(this);
         toolbar.setTitle(R.string.title_add_customer);
-        toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent));
+        toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
         setSupportActionBar(toolbar);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_customer_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    String n = name.getText().toString();
-                    String p = phone.getText().toString();
-                    String e = email.getText().toString();
+                String n = name.getText().toString();
+                String p = phone.getText().toString();
+                String e = email.getText().toString();
 
-                if (!n.equals("") && !p.equals("") && !e.equals("")){
+                if (!n.equals("") && !p.equals("") && !e.equals("")) {
                     user.setName(name.getText().toString());
                     user.setPhoneNumber(Integer.valueOf(phone.getText().toString()));
                     user.setEmail(email.getText().toString());
                     userExist = userExist();
-                    if(!userExist ) {
+                    if (!userExist) {
                         addUser();
-                        name.setText("");phone.setText("");email.setText("");
+                        name.setText("");
+                        phone.setText("");
+                        email.setText("");
                         Snackbar.make(view, R.string.addedUser, Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     } else {
                         Snackbar.make(view, R.string.the_user_already_exist, Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
-                        }
-                }else {
+                    }
+                } else {
                     Snackbar.make(view, R.string.user_add_please_fill_all_fields, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
             }
         });
     }
+
     private void addUser() {
         new AsyncTask<Void, Void, Void>() {
 
@@ -86,7 +90,7 @@ public class CustomerAddActivity extends AppCompatActivity {
                         user.getPhoneNumber());
                 values.put(UserContract.UserEntry.COLUMN_USER_EMAIL,
                         user.getEmail());
-                values.put(UserContract.UserEntry.COLUMN_USER_RANK,0);
+                values.put(UserContract.UserEntry.COLUMN_USER_RANK, 0);
 
                 getContentResolver().insert(
                         UserContract.UserEntry.CONTENT_URI,

@@ -6,12 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nutraweb.jomar.capstone02.R;
 import com.nutraweb.jomar.capstone02.model.UserEntity;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -22,6 +20,7 @@ import butterknife.ButterKnife;
  * Created by joaosantos on 19/01/19.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class CustomerRankAdapter extends RecyclerView.Adapter<CustomerRankAdapter.MenuViewHolder> {
 
     private List<UserEntity> list;
@@ -77,7 +76,7 @@ public class CustomerRankAdapter extends RecyclerView.Adapter<CustomerRankAdapte
         Context context = menuViewHolder.itemView.getContext();
 
         UserEntity u = list.get(position);
-        menuViewHolder.name.setText(u.getName().toString());
+        menuViewHolder.name.setText(u.getName());
         menuViewHolder.rank.setText( String.valueOf(u.getRank()) );
         menuViewHolder.sufix.setText(SUFIX);
         Typeface customFont = Typeface.createFromAsset(context.getAssets(), "fonts/Montserrat-Bold.ttf");

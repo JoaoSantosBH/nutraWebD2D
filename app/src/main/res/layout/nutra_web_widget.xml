@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="2dp"
-        android:src="@mipmap/cap_add_sale_icon" />
+        android:src="@mipmap/cap_add_sale_icon"
+        android:contentDescription="@string/widget_total_sales" />
 
     <TextView
         android:id="@+id/appwidget_text_qty"
@@ -26,18 +27,6 @@
         android:textStyle="bold|italic"
         tools:text="@string/widget_qty" />
 
-    <TextView
-        android:id="@+id/appwidget_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/appwidget_text_qty"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="@+id/appwidget_text_qty"
-        android:contentDescription="@string/appwidget_text"
-        android:text="@string/appwidget_text"
-        android:textColor="#ffffff"
-        android:textSize="12sp"
-        android:textStyle="bold|italic"
-        tools:text="@string/widget_qty" />
+
 
 </RelativeLayout>

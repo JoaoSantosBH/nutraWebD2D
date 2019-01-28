@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
  * Created by jomar on 21/04/18.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class CustomerDashBoardAdapter extends RecyclerView.Adapter<CustomerDashBoardAdapter.MenuViewHolder> {
 
 

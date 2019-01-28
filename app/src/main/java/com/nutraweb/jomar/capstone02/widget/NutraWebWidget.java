@@ -3,7 +3,6 @@ package com.nutraweb.jomar.capstone02.widget;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,7 +10,6 @@ import android.widget.RemoteViews;
 
 import com.nutraweb.jomar.capstone02.R;
 import com.nutraweb.jomar.capstone02.data.SaleContract;
-import com.nutraweb.jomar.capstone02.data.UserContract;
 import com.nutraweb.jomar.capstone02.ui.SalesHistoryActivity;
 
 /**

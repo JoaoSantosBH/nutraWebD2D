@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.nutraweb.jomar.capstone02.R;
-import com.nutraweb.jomar.capstone02.adapter.StockAddAdapter;
 import com.nutraweb.jomar.capstone02.adapter.StockListAdapter;
 import com.nutraweb.jomar.capstone02.data.StockContract;
 import com.nutraweb.jomar.capstone02.model.StockEntity;
@@ -55,7 +54,7 @@ public class StockListItensActivity extends AppCompatActivity implements StockLi
     }
 
     private List<StockEntity> getItensInStock() {
-        List<StockEntity> listItens = new ArrayList<StockEntity>();
+        List<StockEntity> listItens = new ArrayList<>();
         StockEntity s =null;
         Cursor itemCursor = getContentResolver().query(
                 StockContract.StockEntry.CONTENT_URI,

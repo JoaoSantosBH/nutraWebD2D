@@ -22,7 +22,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/customer_add_name"
-        android:hint="@string/user_add_txt_name" />
+        android:hint="@string/user_add_txt_name"
+        tools:ignore="ContentDescription" />
 
     <EditText
         android:id="@+id/addCustomerEditTextPhone"
@@ -37,7 +38,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addCustomerEditTextName"
         android:contentDescription="@string/customer_add_phone"
-        android:hint="@string/user_add_txt_phone"/>
+        android:hint="@string/user_add_txt_phone"
+        tools:ignore="ContentDescription" />
 
     <EditText
         android:id="@+id/addCustomerEditTextEmail"
@@ -53,5 +55,5 @@
         app:layout_constraintTop_toBottomOf="@+id/addCustomerEditTextPhone"
         android:contentDescription="@string/customer_add_email"
         android:hint="@string/user_add_txt_email"
- />
+        tools:ignore="ContentDescription" />
 </android.support.constraint.ConstraintLayout>

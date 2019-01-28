@@ -61,9 +61,7 @@ public class DashBoardActivity extends AppCompatActivity implements DashboardAda
         mAdapter.setList(lista);
         mRecyclerView.setAdapter(mAdapter);
         NutraWebSyncUtils.initialize(this);
-        // Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713
 
-// TODO: Add adView to your view hierarchy.
         MobileAds.initialize(this, "ca-app-pub-5253945965989036~1399832495");
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();

@@ -7,13 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.widget.TextView;
 
 import com.nutraweb.jomar.capstone02.R;
 import com.nutraweb.jomar.capstone02.adapter.CustomerRankAdapter;
-import com.nutraweb.jomar.capstone02.data.RankContract;
 import com.nutraweb.jomar.capstone02.data.UserContract;
-import com.nutraweb.jomar.capstone02.model.RankEntity;
 import com.nutraweb.jomar.capstone02.model.UserEntity;
 
 import java.util.ArrayList;
@@ -26,6 +23,7 @@ import butterknife.ButterKnife;
  * Created by joaosantos on 19/01/19.
  */
 
+@SuppressWarnings("ALL")
 public class CustomerRankActivity extends AppCompatActivity implements CustomerRankAdapter.MenuAdapterClickHandler {
 
 

@@ -9,11 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.nutraweb.jomar.capstone02.R;
-import com.nutraweb.jomar.capstone02.adapter.CustomerRankAdapter;
 import com.nutraweb.jomar.capstone02.adapter.SaleHistoryAdapter;
 import com.nutraweb.jomar.capstone02.data.SaleContract;
 import com.nutraweb.jomar.capstone02.model.SaleEntity;
-import com.nutraweb.jomar.capstone02.model.UserEntity;
 
 import java.util.ArrayList;
 import java.util.List;

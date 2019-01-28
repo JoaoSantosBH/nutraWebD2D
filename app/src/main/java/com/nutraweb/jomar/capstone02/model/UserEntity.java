@@ -3,12 +3,11 @@ package com.nutraweb.jomar.capstone02.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-
 /**
  * Created by jomar on 12/04/18.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class UserEntity implements Parcelable {
     private int _id;
     private String name;

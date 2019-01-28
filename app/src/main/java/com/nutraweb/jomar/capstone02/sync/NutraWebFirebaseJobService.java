@@ -9,6 +9,7 @@ import com.firebase.jobdispatcher.JobService;
  * Created by joaosantos on 14/01/19.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class NutraWebFirebaseJobService extends JobService {
 
     private AsyncTask<Void, Void, Void> mFetchProductsTask;

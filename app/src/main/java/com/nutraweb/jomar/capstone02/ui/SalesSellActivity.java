@@ -58,6 +58,8 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
     TextView total;
     @BindView(R.id.instruct_sale_textView)
     TextView instruct;
+    @BindView(R.id.new_sale_fab)
+    FloatingActionButton fab ;
 
     List<UserEntity> usersList;
 
@@ -86,7 +88,6 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         stockEntities = getItensInStock();
         saleSellAdapter.setList(stockEntities);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.new_sale_fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -193,6 +194,7 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         if (itemCursor != null) {
             if (itemCursor.moveToFirst()) {
                 exist = true;
+                itemCursor.close();
             }
         }
         return exist;
@@ -286,7 +288,7 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
     }
 
     private List<StockEntity> getItensInStock() {
-        List<StockEntity> listItens = new ArrayList<StockEntity>();
+        List<StockEntity> listItens = new ArrayList<>();
         StockEntity s = null;
         Cursor itemCursor = getContentResolver().query(
                 StockContract.StockEntry.CONTENT_URI,
@@ -379,7 +381,7 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         if (value > 0) {
             int price = Integer.valueOf(getProductValue(item));
             addItemOnSale(item, price);
-            decrementStockItem(Integer.valueOf(item.get_id()), item.getQty());
+            decrementStockItem(item.get_id(), item.getQty());
             stockEntities = getItensInStock();
             saleSellAdapter.setList(stockEntities);
         } else {
@@ -440,22 +442,22 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         String email = getUserEmail(sale.getUserId());
         String subject = getString(R.string.email_subject);
         subject += " " + sale.getNumberSale();
-        String emailMessage = "";
+        StringBuilder emailMessage = new StringBuilder();
         String total = String.valueOf(sale.getTotal());
 
         for (ProductEntity p : sale.getItens()) {
-            emailMessage += p.getTitulo() + getString(R.string.email_format);
-            emailMessage += p.getValor() + "\n";
+            emailMessage.append(p.getTitulo()).append(getString(R.string.email_format));
+            emailMessage.append(p.getValor()).append("\n");
         }
 
-        emailMessage += getString(R.string.email_total) + total;
+        emailMessage.append(getString(R.string.email_total)).append(total);
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setType("message/rfc822");
         intent.setData(Uri.parse("mailto:"));
         intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email} );
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        intent.putExtra(Intent.EXTRA_TEXT, emailMessage);
+        intent.putExtra(Intent.EXTRA_TEXT, emailMessage.toString());
 
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);

@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cifer"
-            android:layout_marginLeft="33sp"
+            android:layout_marginStart="33sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="24sp" />
 
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:contentDescription="Total Values of @string/sales_sell_toolbar"
+            android:contentDescription="@string/sales_sell_toolbar"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="24sp"

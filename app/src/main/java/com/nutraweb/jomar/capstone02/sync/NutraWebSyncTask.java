@@ -11,7 +11,6 @@ import com.nutraweb.jomar.capstone02.model.ProductEntity;
 import com.nutraweb.jomar.capstone02.network.NetworkUtils;
 
 import java.lang.reflect.Type;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 

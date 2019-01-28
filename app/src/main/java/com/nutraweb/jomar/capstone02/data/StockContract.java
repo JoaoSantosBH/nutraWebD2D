@@ -5,8 +5,6 @@ import android.content.ContentUris;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-import com.nutraweb.jomar.capstone02.model.StockEntity;
-
 /**
  * Created by jomar on 01/06/18.
  */

@@ -5,11 +5,6 @@ import android.content.ContentUris;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-import com.nutraweb.jomar.capstone02.model.ProductEntity;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by jomar on 28/04/18.
  */
