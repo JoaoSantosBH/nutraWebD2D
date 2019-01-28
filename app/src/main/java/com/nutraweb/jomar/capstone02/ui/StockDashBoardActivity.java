@@ -26,11 +26,7 @@ import butterknife.Unbinder;
     private static final String ADD_ITEM = "Add Item on Stock";
     private static final String LIST_STOCK = "My Stock";
 
-    private List<String> lista;
-    private LinearLayoutManager layoutManager;
-    private StockDashBoardAdapter mAdapter;
-
-    @BindView(R.id.stock_list_recycler_view)
+        @BindView(R.id.stock_list_recycler_view)
     RecyclerView mRecyclerView;
     @BindView(R.id.error_textView)
     TextView textView;
@@ -45,14 +41,14 @@ import butterknife.Unbinder;
 
         ButterKnife.bind(this);
 
-        lista = new ArrayList<>();
+        List<String> lista = new ArrayList<>();
         lista.add(ADD_ITEM);
         lista.add(LIST_STOCK);
 
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
-        mAdapter = new StockDashBoardAdapter(this);
+        StockDashBoardAdapter mAdapter = new StockDashBoardAdapter(this);
         mAdapter.setList(lista);
         mRecyclerView.setAdapter(mAdapter);
 

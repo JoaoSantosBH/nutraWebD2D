@@ -4,9 +4,9 @@ package com.nutraweb.jomar.capstone02.model;
  * Created by joaosantos on 17/01/19.
  */
 
-public class RankEntity {
-    int userId;
-    int userRank;
+class RankEntity {
+    private int userId;
+    private int userRank;
 
     public int getUserId() {
         return userId;

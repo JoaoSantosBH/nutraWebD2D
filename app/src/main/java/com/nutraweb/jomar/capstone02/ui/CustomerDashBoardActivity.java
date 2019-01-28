@@ -24,9 +24,6 @@ public class CustomerDashBoardActivity extends AppCompatActivity implements Cust
 
     private static final String ADD_CUSTOMER = "ADD CUSTOMER";
     private static final String LIST_RANK = "RANK LIST";
-    private List<String> lista;
-    private LinearLayoutManager layoutManager;
-    private CustomerDashBoardAdapter mAdapter;
 
 
     @BindView(R.id.customer_list_recycler_view)
@@ -43,14 +40,14 @@ public class CustomerDashBoardActivity extends AppCompatActivity implements Cust
         ButterKnife.bind(this);
 
 
-        lista = new ArrayList<>();
+        List<String> lista = new ArrayList<>();
         lista.add(ADD_CUSTOMER);
         lista.add(LIST_RANK);
 
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
-        mAdapter = new CustomerDashBoardAdapter(this);
+        CustomerDashBoardAdapter mAdapter = new CustomerDashBoardAdapter(this);
         mAdapter.setList(lista);
         mRecyclerView.setAdapter(mAdapter);
 

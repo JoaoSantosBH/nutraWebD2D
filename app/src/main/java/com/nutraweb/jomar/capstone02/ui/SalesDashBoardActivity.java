@@ -28,10 +28,6 @@ public class SalesDashBoardActivity extends AppCompatActivity implements SalesDa
     private static final String NEW_SALE = "New Sale";
     private static final String HISTORY = "Sales History";
 
-    private List<String> lista;
-    private LinearLayoutManager layoutManager;
-    private SalesDashBoardAdapter mAdapter;
-
     @BindView(R.id.sales_list_recycler_view)
     RecyclerView mRecyclerView;
     @BindView(R.id.error_textView)
@@ -47,14 +43,14 @@ public class SalesDashBoardActivity extends AppCompatActivity implements SalesDa
 
         ButterKnife.bind(this);
 
-        lista = new ArrayList<>();
+        List<String> lista = new ArrayList<>();
         lista.add(NEW_SALE);
         lista.add(HISTORY);
 
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
-        mAdapter = new SalesDashBoardAdapter(this);
+        SalesDashBoardAdapter mAdapter = new SalesDashBoardAdapter(this);
         mAdapter.setList(lista);
         mRecyclerView.setAdapter(mAdapter);
 

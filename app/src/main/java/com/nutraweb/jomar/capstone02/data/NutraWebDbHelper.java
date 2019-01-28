@@ -9,13 +9,13 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 @SuppressWarnings("DefaultFileTemplate")
-public class NutraWebDbHelper extends SQLiteOpenHelper {
+class NutraWebDbHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "nutra.db";
+    private static final String DATABASE_NAME = "nutra.db";
     private static final int DATABASE_VERSION = 5;
 
 
-    final String SQL_CREATE_USERS_TABLE = "CREATE TABLE " + UserContract.UserEntry.TABLE_NAME + " (" +
+    private final String SQL_CREATE_USERS_TABLE = "CREATE TABLE " + UserContract.UserEntry.TABLE_NAME + " (" +
             UserContract.UserEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             UserContract.UserEntry.COLUMN_USER_NAME + " TEXT NOT NULL, " +
             UserContract.UserEntry.COLUMN_USER_EMAIL + " TEXT NOT NULL, " +
@@ -23,7 +23,7 @@ public class NutraWebDbHelper extends SQLiteOpenHelper {
             UserContract.UserEntry.COLUMN_USER_RANK + " INTEGER NOT NULL " +
             ");";
 
-    final String SQL_CREATE_PRODUCTS_TABLE = "CREATE TABLE " + ProductContract.ProductEntry.TABLE_NAME + " (" +
+    private final String SQL_CREATE_PRODUCTS_TABLE = "CREATE TABLE " + ProductContract.ProductEntry.TABLE_NAME + " (" +
             ProductContract.ProductEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             ProductContract.ProductEntry.COLUMN_PRODUCT_PRODUCTID + " TEXT NOT NULL, " +
             ProductContract.ProductEntry.COLUMN_PRODUCT_TITLE + " TEXT NOT NULL, " +
@@ -32,7 +32,7 @@ public class NutraWebDbHelper extends SQLiteOpenHelper {
             ProductContract.ProductEntry.COLUMN__PRODUCT_PRICE + " INTEGER NOT NULL " +
             ");";
 
-    final String SQL_CREATE_SALE_TABLE = "CREATE TABLE " + SaleContract.SaleEntry.TABLE_NAME + " (" +
+    private final String SQL_CREATE_SALE_TABLE = "CREATE TABLE " + SaleContract.SaleEntry.TABLE_NAME + " (" +
             SaleContract.SaleEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             SaleContract.SaleEntry.COLUMN_SALE_NUMBER + " INTEGER NOT NULL, " +
             SaleContract.SaleEntry.COLUMN_SALE_USER_ID + " INTEGER NOT NULL, " +
@@ -41,7 +41,7 @@ public class NutraWebDbHelper extends SQLiteOpenHelper {
             SaleContract.SaleEntry.COLUMN_SALE_TOTAL + " INTEGER NOT NULL " +
             ");";
 
-    final String SQL_CREATE_STOCK_TABLE = "CREATE TABLE " + StockContract.StockEntry.TABLE_NAME + " (" +
+    private final String SQL_CREATE_STOCK_TABLE = "CREATE TABLE " + StockContract.StockEntry.TABLE_NAME + " (" +
             StockContract.StockEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             StockContract.StockEntry.COLUMN_STOCK_PRODUCTID + " TEXT NOT NULL, " +
             StockContract.StockEntry.COLUMN_STOCK_PRODUCT_NAME + " TEXT NOT NULL, " +
@@ -50,7 +50,7 @@ public class NutraWebDbHelper extends SQLiteOpenHelper {
 
             ");";
 
-    final String SQL_CREATE_RANCK_TABLE = "CREATE TABLE " + RankContract.RankEntry.TABLE_NAME + " (" +
+    private final String SQL_CREATE_RANCK_TABLE = "CREATE TABLE " + RankContract.RankEntry.TABLE_NAME + " (" +
             RankContract.RankEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             RankContract.RankEntry.COLUMN_USER_ID + " INTEGER NOT NULL ," +
             RankContract.RankEntry.COLUMN_USER_RANK + " INTEGER NOT NULL " +

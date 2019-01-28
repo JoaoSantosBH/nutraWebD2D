@@ -42,7 +42,6 @@ public class ProductDetailActivity extends AppCompatActivity {
     @BindView(R.id.fab_product_detail)
     FloatingActionButton fab;
 
-    private StockEntity stockItem;
     private int mQuantity = 0;
     private int mTotalPrice = 0;
     private int value;

@@ -1,5 +1,6 @@
 package com.nutraweb.jomar.capstone02.ui;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -44,8 +45,6 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
     private SaleSellAdapter saleSellAdapter;
     private List<StockEntity> stockEntities;
     private List<ProductEntity> saleList;
-    private SaleEntity sale;
-    private GridLayoutManager layoutManager;
     private int totalSale;
 
     @BindView(R.id.list_stcok_sales_recycler_view)
@@ -60,15 +59,16 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
     TextView instruct;
     @BindView(R.id.new_sale_fab)
     FloatingActionButton fab ;
-
-    List<UserEntity> usersList;
+    @BindView(R.id.no_itens)
+    TextView isEmpty;
+    private List<UserEntity> usersList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sales_sellr);
         saleList = new ArrayList<>();
-        sale = new SaleEntity();
+        SaleEntity sale = new SaleEntity();
         ButterKnife.bind(this);
         usersList = getCustomers();
         ArrayAdapter<UserEntity> dataAdapter = new ArrayAdapter<>(this,
@@ -79,13 +79,18 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
 
         setSupportActionBar(toolbar);
-        layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false);
 
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
         saleSellAdapter = new SaleSellAdapter(this);
         mRecyclerView.setAdapter(saleSellAdapter);
         stockEntities = getItensInStock();
+        if (stockEntities.size() ==0){
+            isEmpty.setVisibility(View.VISIBLE);
+        } else {
+            isEmpty.setVisibility(View.GONE);
+        }
         saleSellAdapter.setList(stockEntities);
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +108,24 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
             }
         });
     }
+    @Override
+    public void onClick(StockEntity item) {
 
+            String qty = getStockQty(item);
+            Integer value = Integer.valueOf(qty);
+            if (value > 0 ) {
+                int price = Integer.valueOf(getProductValue(item));
+                addItemOnSale(item, price);
+                decrementStockItem(item.get_id(), item.getQty());
+                stockEntities = getItensInStock();
+                saleSellAdapter.setList(stockEntities);
+            } else {
+                stockEntities = getItensInStock();
+                saleSellAdapter.setList(stockEntities);
+                Toast.makeText(this, R.string.no_item_available, Toast.LENGTH_LONG).show();
+            }
+
+    }
     private void clearSale(){
         totalSale = 0;
         saleList.clear();
@@ -114,7 +136,7 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         String orderNumber = buyOrderNumber();
         Calendar c = Calendar.getInstance();
         Calendar today = Calendar.getInstance();
-        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat s = new SimpleDateFormat("dd-MM-yy");
         String now = s.format(today.getTime());
         SaleEntity sale = new SaleEntity();
         sale.setItens(saleList);
@@ -200,7 +222,7 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         return exist;
     }
 
-    public static String buyOrderNumber() {
+    private static String buyOrderNumber() {
         Calendar c = Calendar.getInstance();
         Calendar today = Calendar.getInstance();
         SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
@@ -350,6 +372,9 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
             }
         }
         itemCursor.close();
+        if (value.equals("")){
+            value = "0";
+        }
         return value;
     }
 
@@ -373,21 +398,7 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
     }
 
 
-    @Override
-    public void onClick(StockEntity item) {
-        String qty = getStockQty(item);
 
-        int value = Integer.valueOf(qty);
-        if (value > 0) {
-            int price = Integer.valueOf(getProductValue(item));
-            addItemOnSale(item, price);
-            decrementStockItem(item.get_id(), item.getQty());
-            stockEntities = getItensInStock();
-            saleSellAdapter.setList(stockEntities);
-        } else {
-            Toast.makeText(this, "There is no items on stokc", Toast.LENGTH_LONG).show();
-        }
-    }
 
     private void addItemOnSale(StockEntity item, int price) {
         //decrement itemStock qty
@@ -426,7 +437,7 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
         }
         return value;
     }
-    public void createSale(SaleEntity sale){
+    private void createSale(SaleEntity sale){
 
         ContentValues valuesProd = new ContentValues();
         valuesProd.put(SaleContract.SaleEntry.COLUMN_SALE_QTY, sale.getQty());
@@ -438,7 +449,7 @@ public class SalesSellActivity extends AppCompatActivity implements SaleSellAdap
                 SaleContract.SaleEntry.CONTENT_URI,
                 valuesProd);
     }
-    public void sendEmail(SaleEntity sale) {
+    private void sendEmail(SaleEntity sale) {
         String email = getUserEmail(sale.getUserId());
         String subject = getString(R.string.email_subject);
         subject += " " + sale.getNumberSale();

@@ -42,7 +42,13 @@
 
 
     </android.support.design.widget.AppBarLayout>
-
+<TextView
+    android:id="@+id/no_itens"
+    android:visibility="invisible"
+    android:text="@string/no_items"
+    android:layout_gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
     <!--<include layout="@layout/content_sell_new" />-->
     <RelativeLayout
         android:layout_gravity="bottom"

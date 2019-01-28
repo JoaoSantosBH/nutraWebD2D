@@ -52,7 +52,7 @@ public class UserEntity implements Parcelable {
         this.phoneNumber = phoneNumber;
     }
 
-    public UserEntity(Parcel in) {
+    private UserEntity(Parcel in) {
         _id = in.readInt();
         name = in.readString();
         email = in.readString();

@@ -30,7 +30,7 @@ public class NutraWebSyncUtils {
 
     private static final String NUTRA_SYNC_TAG = "nutra-sync";
 
-    static void scheduleFirebaseJobDispatcherSync(@NonNull final Context context) {
+    private static void scheduleFirebaseJobDispatcherSync(@NonNull final Context context) {
 
         Driver driver = new GooglePlayDriver(context);
         FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(driver);
@@ -84,7 +84,7 @@ public class NutraWebSyncUtils {
     }
 
 
-    public static void startImmediateSync(@NonNull final Context context) {
+    private static void startImmediateSync(@NonNull final Context context) {
         Intent intentToSyncImmediately = new Intent(context, NutraWebSyncIntentService.class);
         context.startService(intentToSyncImmediately);
     }

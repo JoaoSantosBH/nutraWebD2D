@@ -33,7 +33,6 @@ public class StockAddItemActivity extends AppCompatActivity implements StockAddA
 
     private static final String URL = "http://audiolabpp.com.br/img/nutraWeb_info/nutrawebJSON.json";
     private static final int PRODUCT_LOADER = 2;
-    private List<ProductEntity> productEntityList;
     private final Type productListType = new TypeToken<ArrayList<ProductEntity>>(){}.getType();
     private StockAddAdapter stockAddAdapter;
     private ProductListener productClickListener;
@@ -46,7 +45,6 @@ public class StockAddItemActivity extends AppCompatActivity implements StockAddA
     }
 
 
-    private GridLayoutManager layoutManager;
     @BindView(R.id.add_stock_toolbar)
     Toolbar toolbar;
 
@@ -82,7 +80,7 @@ public class StockAddItemActivity extends AppCompatActivity implements StockAddA
             loaderManager.initLoader(PRODUCT_LOADER, null, this);
         }
 
-        layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
 
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
@@ -127,7 +125,7 @@ public class StockAddItemActivity extends AppCompatActivity implements StockAddA
     public void onLoadFinished(Loader<String> loader, String data) {
         spinKitView.setVisibility(View.INVISIBLE);
         if (data != null) {
-            productEntityList = new Gson().fromJson(data, productListType);
+            List<ProductEntity> productEntityList = new Gson().fromJson(data, productListType);
             stockAddAdapter.setList(productEntityList);
         } else {
             spinKitView.setVisibility(View.VISIBLE);

@@ -63,7 +63,7 @@ public class SaleEntity implements Parcelable {
 
 
 
-    public SaleEntity(Parcel in) {
+    private SaleEntity(Parcel in) {
         numberSale = in.readInt();
         userId = in.readInt();
         date = in.readString();

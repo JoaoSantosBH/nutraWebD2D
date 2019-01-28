@@ -24,10 +24,7 @@ import butterknife.ButterKnife;
  */
 
 public class StockListItensActivity extends AppCompatActivity implements StockListAdapter.MenuAdapterClickHandler{
-    private StockListAdapter stockListAdapter;
-    private List<StockEntity> stockEntities;
 
-    private GridLayoutManager layoutManager;
     @BindView(R.id.list_stock_toolbar)
     Toolbar toolbar;
 
@@ -41,15 +38,15 @@ public class StockListItensActivity extends AppCompatActivity implements StockLi
         toolbar.setTitle(R.string.title_list_stock);
         toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent));
 
-        layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
 
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
-        stockListAdapter = new StockListAdapter(this);
+        StockListAdapter stockListAdapter = new StockListAdapter(this);
         mRecyclerView.setAdapter(stockListAdapter);
         setSupportActionBar(toolbar);
 
-        stockEntities =  getItensInStock();
+        List<StockEntity> stockEntities = getItensInStock();
         stockListAdapter.setList(stockEntities);
     }
 

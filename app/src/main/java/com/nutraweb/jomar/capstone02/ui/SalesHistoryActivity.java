@@ -21,9 +21,6 @@ import butterknife.ButterKnife;
 
 public class SalesHistoryActivity extends AppCompatActivity implements SaleHistoryAdapter.SalesAdapterClickHandler {
 
-    private List<SaleEntity> sales;
-    private SaleHistoryAdapter adapter;
-    private LinearLayoutManager layoutManager;
     @BindView(R.id.sales_hist_recycler_view)
     RecyclerView mRecyclerView;
     @BindView(R.id.sales_hist_toolbar)
@@ -37,13 +34,13 @@ public class SalesHistoryActivity extends AppCompatActivity implements SaleHisto
         toolbar.setTitle(R.string.title_sales_hist);
         toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(),R.color.colorAccent));
         setSupportActionBar(toolbar);
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
-        adapter = new SaleHistoryAdapter(this);
+        SaleHistoryAdapter adapter = new SaleHistoryAdapter(this);
         mRecyclerView.setAdapter(adapter);
-        sales = getSales();
+        List<SaleEntity> sales = getSales();
         adapter.setList(sales);
     }
 

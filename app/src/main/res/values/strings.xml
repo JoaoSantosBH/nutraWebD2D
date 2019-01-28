@@ -104,4 +104,6 @@
     <string name="widget_total_sales">Number of Sales</string>
     <string name="product_title">Title</string>
     <string name="money_prefix">R$</string>
+    <string name="no_item_available">This item is no more on stokc</string>
+    <string name="no_items">There is no itens</string>
 </resources>

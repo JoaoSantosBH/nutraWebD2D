@@ -27,14 +27,10 @@ import com.google.android.gms.ads.AdView;
 
 
 public class DashBoardActivity extends AppCompatActivity implements DashboardAdapter.MenuAdapterClickHandler {
-    private AdView mAdView;
 
     private static final String CUSTOMER = "CUSTOMER";
     private static final String SALES = "SALES";
     private static final String STOCK ="STOCK";
-    private List<String> lista;
-    private LinearLayoutManager layoutManager;
-    private DashboardAdapter mAdapter;
     @BindView(R.id.dash_recyclerview)
     RecyclerView mRecyclerView;
     @BindView(R.id.error_textView)
@@ -43,27 +39,25 @@ public class DashBoardActivity extends AppCompatActivity implements DashboardAda
     SpinKitView kitView;
 
 
-
-    private Unbinder unbinder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
         ButterKnife.bind(this);
-        lista = new ArrayList<>();
+        List<String> lista = new ArrayList<>();
         lista.add(CUSTOMER);
         lista.add(SALES);
         lista.add(STOCK);
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
-        mAdapter = new DashboardAdapter(this);
+        DashboardAdapter mAdapter = new DashboardAdapter(this);
         mAdapter.setList(lista);
         mRecyclerView.setAdapter(mAdapter);
         NutraWebSyncUtils.initialize(this);
 
         MobileAds.initialize(this, "ca-app-pub-5253945965989036~1399832495");
-        mAdView = findViewById(R.id.adView);
+        AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 

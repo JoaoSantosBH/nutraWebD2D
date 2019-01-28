@@ -16,7 +16,7 @@ public class StockEntity implements Parcelable {
     private String thumb;
     private int qty;
 
-    public StockEntity(Parcel in) {
+    private StockEntity(Parcel in) {
         _id = in.readInt();
         productId = in.readString();
         productName = in.readString();

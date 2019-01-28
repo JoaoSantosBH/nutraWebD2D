@@ -17,8 +17,8 @@ import com.nutraweb.jomar.capstone02.ui.SalesHistoryActivity;
  */
 public class NutraWebWidget extends AppWidgetProvider {
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
+    private static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+                                        int appWidgetId) {
         int total = 0;
         Cursor itemCursor = context.getContentResolver().query(
 

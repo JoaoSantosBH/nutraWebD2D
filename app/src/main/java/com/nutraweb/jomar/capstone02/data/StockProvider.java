@@ -16,9 +16,9 @@ import android.support.annotation.Nullable;
  */
 
 public class StockProvider extends ContentProvider{
-    public static final int STOC_ITEM = 0;
-    public static final int CODE_STOCK_ID = 1;
-    private static UriMatcher sUriMatcher = buildUriMatcher();
+    private static final int STOC_ITEM = 0;
+    private static final int CODE_STOCK_ID = 1;
+    private static final UriMatcher sUriMatcher = buildUriMatcher();
     private NutraWebDbHelper mOpenDbHelper;
 
     private static UriMatcher buildUriMatcher(){

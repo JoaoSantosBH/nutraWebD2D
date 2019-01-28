@@ -22,8 +22,7 @@ public class SaleHistoryAdapter extends RecyclerView.Adapter<SaleHistoryAdapter.
 
     private final SaleHistoryAdapter.SalesAdapterClickHandler mClickHandler;
     private List<SaleEntity> list;
-    private int total, number;
-    private String date;
+
     public interface SalesAdapterClickHandler{
         void onClick(SaleEntity sale);
     }
@@ -65,11 +64,11 @@ public class SaleHistoryAdapter extends RecyclerView.Adapter<SaleHistoryAdapter.
     @Override
     public void onBindViewHolder(SaleHistoryAdapter.SalesHistViewHolder holder, int position) {
 
-        number = list.get(position).getNumberSale();
+        int number = list.get(position).getNumberSale();
         holder.orderNumber.setText(String.valueOf(number));
-        date = list.get(position).getDate();
+        String date = list.get(position).getDate();
         holder.orderDate.setText(String.valueOf(date));
-        total = list.get(position).getTotal();
+        int total = list.get(position).getTotal();
         holder.orderTotal.setText(String.valueOf(total));
     }
 

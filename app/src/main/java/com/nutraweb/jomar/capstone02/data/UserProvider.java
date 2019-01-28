@@ -18,9 +18,9 @@ import android.support.annotation.Nullable;
 @SuppressWarnings("DefaultFileTemplate")
 public class UserProvider extends ContentProvider {
 
-    public static final int USER_ITEM = 10;
+    private static final int USER_ITEM = 10;
     public static final int CODE_USER_ID = 11;
-    private static UriMatcher sUriMatcher = buildUriMatcher();
+    private static final UriMatcher sUriMatcher = buildUriMatcher();
     private NutraWebDbHelper mOpenDbHelper;
 
     private static UriMatcher buildUriMatcher(){
