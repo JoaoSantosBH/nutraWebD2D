@@ -14,19 +14,8 @@ android {
     gradle.taskGraph.whenReady {
         addCurrentDate
     }
-    gradle.taskGraph.whenReady {
-        addCurrentDate
-    }
 
-
-    signingConfigs {
-        config {
-            keyAlias 'key0'
-            keyPassword 'password'
-            storeFile file('/home/joaosantos/DevelopProjects/Udacity/CapstoneProject/capstone02/Capstone02/app/chave.jks')
-            storePassword 'password'
-        }
-    }
+    buildToolsVersion '28.0.3'
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.nutraweb.jomar.capstone02"
@@ -35,13 +24,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        signingConfig signingConfigs.config
+
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
         }
     }
     productFlavors {
@@ -52,9 +40,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.google.firebase:firebase-core:12.0.1'
     implementation 'com.google.firebase:firebase-auth:12.0.1'
     implementation 'com.jakewharton:butterknife:8.8.1'
