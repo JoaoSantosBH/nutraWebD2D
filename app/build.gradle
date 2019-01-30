@@ -1,7 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword 'password'
+            storeFile file('/home/joaosantos/DevelopProjects/Udacity/CapstoneProject/capstone02/Capstone02/app/secret.jks')
+            storePassword 'password'
+        }
+    }
     task addCurrentDate() {
         android.applicationVariants.all { variant ->
             variant.outputs.all { output ->
@@ -14,7 +21,6 @@ android {
     gradle.taskGraph.whenReady {
         addCurrentDate
     }
-
     buildToolsVersion '28.0.3'
     compileSdkVersion 26
     defaultConfig {
@@ -30,6 +36,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+            debuggable true
         }
     }
     productFlavors {
