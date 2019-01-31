@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'key0'
             keyPassword 'password'
-            storeFile file('/home/joaosantos/DevelopProjects/Udacity/CapstoneProject/capstone02/Capstone02/app/secret.jks')
+            storeFile file('./secret.jks')
             storePassword 'password'
         }
     }
