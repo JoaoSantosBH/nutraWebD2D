@@ -39,7 +39,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SalesSellActivity extends AppCompatActivity implements SaleSellAdapter.MenuAdapterClickHandler {
+public class    SalesSellActivity extends AppCompatActivity implements SaleSellAdapter.MenuAdapterClickHandler {
 
 
     private SaleSellAdapter saleSellAdapter;

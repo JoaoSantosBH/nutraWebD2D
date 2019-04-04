@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "599313452689-e0uqkqjjbjddu6ueasvlr2r5m3oe0rjt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nutraweb.jomar.capstone02",
+            "certificate_hash": "c5360447f13752a3b1c0c4f149107889e6a78ab5"
+          }
+        },
+        {
           "client_id": "599313452689-kn9ca0cdjood3ggth8h0ocuk7pklr09i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -31,11 +39,19 @@
           }
         },
         {
-          "client_id": "599313452689-e0uqkqjjbjddu6ueasvlr2r5m3oe0rjt.apps.googleusercontent.com",
+          "client_id": "599313452689-10cctk4dmcnjcgplj29589rk6vnekd9h.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.nutraweb.jomar.capstone02",
-            "certificate_hash": "c5360447f13752a3b1c0c4f149107889e6a78ab5"
+            "certificate_hash": "244e873bd35fe5503c2e0f3f4dc5c55d044c725f"
+          }
+        },
+        {
+          "client_id": "599313452689-3r4so7joue03p5ipk679g186u5vmrbqd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nutraweb.jomar.capstone02",
+            "certificate_hash": "e43b0efba40bfaf6c8ea976d71b0bcf298bd4b91"
           }
         },
         {

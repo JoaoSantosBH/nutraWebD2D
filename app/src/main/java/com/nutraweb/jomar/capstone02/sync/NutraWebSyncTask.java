@@ -19,7 +19,9 @@ import java.util.List;
  */
 
 class NutraWebSyncTask {
+
     synchronized public static void syncData(Context context) {
+
          List<ProductEntity> productEntityList;
          final Type productListType = new TypeToken<ArrayList<ProductEntity>>(){}.getType();
 
